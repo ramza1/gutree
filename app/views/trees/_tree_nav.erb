@@ -1,0 +1,26 @@
+<aside id="branch" class="right_panel">
+  <div class="inner branch">
+    <div class="polaroid photo">
+      <%= image_tag @tree.photo.url(:thumb), :alt =>@tree.name %>
+
+      <p class="tip meta letter_pressed countable">
+        <i class=" icon-group"></i> <span class="badge badge-success">13</span>
+        <span class="separator tip-divider-vertical">&nbsp;    &nbsp;</span>
+        <i class=" icon-leaf"></i> <span class="badge badge-success">5</span>
+      </p>
+    </div>
+    <header class="letter_pressed name ">
+      <h5 class="light_header   ui-inline-text " title="<%= @tree.name %>">
+        <%= @tree.name %>
+      </h5>
+    </header>
+    <ul class="nav nav-list">
+      <%= nav_tab 'Branches',"#", :current=>current_tab,:icon=>{:class=>"icon-leaf"}%>
+      <%= nav_tab 'Admins',"#", :current=>current_tab,:icon=>{:class=>"icon-user"}%>
+      <%= nav_tab 'Members',"#", :current=>current_tab,:icon=>{:class=>"icon-group"}%>
+      <%= nav_tab 'Info',"#", :current=>current_tab,:icon=>{:class=>"icon-info-sign"}%>
+      <%= nav_tab 'Edit',"#", :current=>current_tab,:icon=>{:class=>"icon-pencil"}%>
+      <li class="divider-horizontal"></li>
+    </ul>
+  </div>
+</aside>

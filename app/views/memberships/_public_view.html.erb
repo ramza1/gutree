@@ -1,0 +1,13 @@
+<div class="users">
+  <header class="ui-mini-header letter_pressed">
+    <h5 class="light_header p"><i class=" icon-group"></i> Branch Ins
+    </h5>
+  </header>
+  <ul class="lv">
+    <% branch.memberships.all(:include => :user, :order => 'users.name').each do |membership| %>
+        <% if user = membership.user %>
+            <%= render :partial => 'user', :locals => {:user => user, :membership => membership} %>
+        <% end %>
+    <% end %>
+  </ul>
+</div>

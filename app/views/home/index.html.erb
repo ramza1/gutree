@@ -1,0 +1,20 @@
+<% content_for :user_auth do %>
+    <div class="sign_up pull-right">
+      <%= link_to new_user_registration_path,class:"btn btn-primary" do %>
+          Sign Up
+      <% end %>
+    </div>
+    <ul class="nav pull-right">
+      <li class="divider-vertical"></li>
+      <%= nav_tab 'login',new_user_session_path, current:"",icon:{:class=>""}%>
+    </ul>
+<% end %>
+<%= current_aux_nav("home") %>
+<div class="container-fluid">
+</div>
+<div id="login" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  </div>
+</div>
+

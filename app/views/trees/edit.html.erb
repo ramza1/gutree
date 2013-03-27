@@ -1,0 +1,116 @@
+<% content_for :tool_bar do %>
+    <div class="toolbar" align="center">
+      <form class="form-inline navbar-search search">
+        <div class="input-append btn-group">
+          <input type="text" class="search-query input-xlarge" placeholder="search for tips ">
+          <button class="btn btn-primary" type="button"><i class="icon-search"></i></button>
+          <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <!-- dropdown menu links -->
+          </ul>
+        </div>
+      </form>
+    </div>
+<% end %>
+
+<div  class="modal-form no-shadow">
+  <div class="modal-header">
+  </div>
+  <div class="form-box">
+    <header class="ui-min-header">
+      <h3 class="letter_pressed light_header ">Edit Your Tree</h3>
+    </header>
+    <%= simple_form_for(@tree, :method => "put",:url => tree_path(@tree)) do |f| %>
+        <div class="form-body  row-fluid">
+          <div class="span3">
+            <div class="steps form-container">
+              <% if @tree.photo.present? %>
+                  <a class="preview photo_chooser">
+                    <div class="image_wrap">
+                      <div class="image-container">
+                        <%= image_tag @tree.photo.url(:croppable), :alt => @tree.name %>
+                        <span class="prev_status">change photo</span>
+                      </div>
+                    </div>
+              <span class="loading_pane help-inline">
+                <i class="icon-picture"></i> preview
+              </span>
+                  </a>
+              <% else %>
+                  <a id="pick" class="upload_btn photo_chooser" >
+              <span class="ui-btn-inner">
+              <span class="ui-icon"><i class="icon-picture"></i></span>
+                <span class="ui-text">Pick a photo or drag photo here</span>
+              </span>
+                  </a>
+              <% end %>
+              <div id="profile_upload_photo" data-upload_url="<%= change_photo_tree_url(@tree,:format=>"json")%>" ></div>
+              <div id="profile_upload_photo_preview"></div>
+            </div>
+          </div>
+
+          <div class="span9">
+            <div class="rt form-container">
+              <%= f.error_notification %>
+              <div class="form-inputs ">
+                <%= f.input :domain, :wrapper_html => { :class => 'control-group' } ,:disabled => true,:input_html => {:class=>"input_padding_extra uneditable-input"}, :hint => 'You cannot change your domain.' %>
+                <%= f.input :name,:input_html => {:class=>"input_padding_extra"} %>
+                <%= f.input :about,:as=>:text,:input_html => {:rows=>"3",:class=>"input_padding_extra"} %>
+                <%= f.input :tag_list, :label => 'Tags', :label_html => {
+                  :data=>{
+                        :placement=>"right",
+                        :content=>"list the categories or words you feel that this tree belongs to. eg entertainment, fashion, arts, etc.",
+                        :title=>"Tags",
+                        },
+                  :rel=>"popover",
+                  :class => 'popover_trigger'
+                 } ,
+                            :wrapper_html => { :class => 'control-group' },:as=>:text,:input_html => {:rows=>"3",:data_url=>"",:class=>"tag-input listbuilderinput"},:hint => 'type a name and press enter or comma.' %>
+                <%= f.input :established, :label => 'Year Established',:input_html => {:class=>"chzn-select"},:as => :date, :start_year => Date.today.year,:end_year => Date.today.year - 100, :discard_day => true,:discard_month => true,:order => [:year] %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+          <button type="submit" class="btn btn-primary">Next &raquo; </button>
+        </div>
+
+    <% end %>
+  </div>
+</div>
+</div>
+<% content_for :javascript_contents do %>
+    <%= javascript_include_tag "controller/profiles" %>
+<% end %>
+<!-- templates-->
+<script id="post-upload-progress-tmpl" type="text/x-jquery-tmpl">
+  <div class="photo-upload-progress">
+    <span class="help-inline"><i class="icon-picture"></i> <span class="status">uploading 40%</span></span>
+    <div class="progress progress-success progress-striped active">
+      <div class="bar" style="width:40%"></div>
+    </div>
+  </div>
+</script>
+<script id="post-upload-error-tmpl" type="text/x-jquery-tmpl">
+  <div class="photo-upload-error">
+    <div class="alert alert-error">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <i class="icon-warning-sign"></i> <strong> Error occurred!</strong>
+    </div>
+  </div>
+</script>
+<script id="post-upload-preview-tmpl" type="text/x-jquery-tmpl">
+  <a class="preview photo_chooser">
+    <div class="image_wrap">
+      <div class="image-container">
+        <img src='${src}'/>
+      </div>
+    </div>
+              <span class="loading_pane help-inline">
+                <i class="icon-picture"></i> preview
+              </span>
+    </div>
+  </a>
+</script>

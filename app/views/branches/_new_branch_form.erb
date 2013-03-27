@@ -1,0 +1,47 @@
+<%= simple_form_for(@branch, :method => "post",:url => tree_branches_url(@tree,@branch),:html=>{:id=>"new_branch_form",:data=>{:url=>tree_branches_url(@tree,:format=>"js")}})  do |f| %>
+    <div class="form-body  row-fluid">
+      <div class="form-container">
+        <%= f.error_notification %>
+        <div id="privacy">
+          <p class="hint">
+            What type of branch are you creating?
+          </p>
+          <ul   class=" ui-grid-a">
+            <li class="ui-block">
+              <a class="ui-btn private" rel="popover" data-placement="top" data-content="Only invited members can join, view and share tips" data-original-title="Private branches ">
+              <span class="ui-btn-inner">
+              <span class="ui-icon"><i class="icon-lock"></i></span>
+                <span class="ui-text">Private Branch</span>
+              </span>
+              </a>
+            </li>
+            <li class="ui-block">
+              <a class="ui-btn public" rel="popover" data-placement="top" data-content="Anyone can join, view and share tips" data-original-title="Public Branch">
+              <span class="ui-btn-inner">
+              <span class="ui-icon"><i class="icon-globe"></i></span>
+                <span class="ui-text">Public Branch</span>
+              </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <%= f.hidden_field :private,:class=>"type"%>
+        <%= f.hidden_field :tree_id,:class=>"type"%>
+        <%= f.hidden_field :parent_id,:class=>"type"%>
+        <div id="name_el">
+          <%= f.input :name,:input_html => {:class=>"input_padding_extra"},:label_html => { :data=>{
+                  :placement=>"top",
+                  :content=>"Enter a unique name for this branch",
+                  :title=>"Name"
+          },:rel=>"popover",:class => 'popover_trigger'},
+                      :wrapper_html => { :class => 'control-group' } %>
+
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <button type="submit" class="create disabled btn btn-primary" data-complete-text="Create Branch">Create Branch</button>
+      <a class="btn cancel" >Cancel</a>
+    </div>
+
+<% end %>

@@ -1,0 +1,5 @@
+var li = $("<%= j render @comment %>").hide();
+$("#<%= dom_id(@comment.broadcast)%>").prepend(li);
+li.fadeIn('slow');
+$("#new_comment_<%= dom_id(@comment.broadcast)%>")[0].reset();
+

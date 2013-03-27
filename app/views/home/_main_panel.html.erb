@@ -1,0 +1,11 @@
+<section class=" grayed  center_panel">
+<div id="main" class="container-fluid">
+<ul id="tiles">
+  <% if @branches.empty? %>
+      <p class="alert alert-info">Hello! Gutrees is new. Welcome!</p>
+  <% else %>
+      <%= render @branches %>
+  <% end %>
+</ul>
+</div>
+</section>

@@ -1,0 +1,7 @@
+<div id="branches">
+  <div id="all" class="all" data-collection_url=<%= all_branches_tree_url @tree %>>
+    <ul id="tiles" class="items">
+      <%= render :partial => "branches/branch",:collection => @tree.branches%>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+(function(){
+    $("#branches").trigger("branches:update",{el:'<%= escape_javascript(render @branch)%>',branch_id:'<%=@branch.id%>'});
+    console.log("branches_len",$("#branches").length)
+    return {el:'<%= escape_javascript(render @branch)%>',branch_id:'<%=@branch.id%>'}
+})()

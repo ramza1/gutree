@@ -1,0 +1,3 @@
+(function(){
+    $("#branches").trigger("branches:create",{el:'<%= escape_javascript(render @branch)%>',collection_url:'<%= all_branches_tree_url @tree%>',branch_id:'<%=@branch.id%>'});
+})()

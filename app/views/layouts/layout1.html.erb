@@ -1,0 +1,42 @@
+<div class="secondary_nav">
+<div class="top_panel">
+  <div class="container-fluid">
+    <%= yield :top_panel_stamp %>
+    <div class="user_tp letter_pressed">
+      <%= yield :top_panel_content %>
+      <div class="btm_shadow_r span10">
+        <div class="shadow-top"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+<div class="row-fluid a_main user">
+<aside class=" left_panel">
+  <div class="shadow-top"></div>
+  <div class="left_panel_wrap">
+    <div class="inner">
+      <%= yield :left_panel_content %>
+    </div>
+  </div>
+</aside>
+<section class=" center_panel">
+<div class="container-fluid">
+<div class="row">
+  <%= yield :center_panel_content %>
+</div>
+</div>
+</section>
+<aside class="right_panel">
+  <div class="inner">
+    <a class="brand">
+      <img src="/assets/gutress.png" />
+    </a>
+    <div class="ad">
+      <img src="/assets/image_9.jpg" />
+    </div>
+  </div>
+</aside>
+</div>
+</div>  </div>
+<%= yield :chat_content %>

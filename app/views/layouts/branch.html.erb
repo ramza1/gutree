@@ -1,0 +1,130 @@
+<% content_for :top_panel_stamp do %>
+    <% if content_for?(:top_panel_stamp)%>
+        <%= yield(:top_panel_stamp) %>
+    <% else %>
+        <div class="stamp">
+          <div class="btm_shadow_l">
+            <div class="shadow-top"></div>
+          </div>
+          <div class="stamp_wrap">
+            <div class="stamp_tp"></div>
+            <div class="stamp_bt"></div>
+            <div class="stamp_ct">
+              <%= image_tag @branch.icon(:thumb),width:"140",height:"140"%>
+            </div>
+          </div>
+        </div>
+    <% end %>
+<% end %>
+<% content_for :top_panel_content do %>
+    <% if content_for?(:top_panel_content)%>
+        <%= yield(:top_panel_content) %>
+    <% else %>
+        <div class="user_meta">
+          <a class="btn " data-toggle="dropdown" href="#">
+            <i class=" icon-arrow-up"></i>
+          </a>
+               <span class="btn-group">
+           <a class="btn dropdown-toggle " data-toggle="dropdown" href="#">
+             Action
+             <span class="caret"></span>
+           </a>
+           <ul class="top_arrowed dropdown-menu">
+             <li class="dropdown-submenu">
+               <a tabindex="-1" href="#">
+                 <i class=" icon-share"></i>
+                 share
+               </a>
+               <ul class="dropdown-menu">
+                 <li>
+                   <a href="#">
+                     <i class=" icon-facebook"></i>
+                     facebook
+                   </a>
+                 </li>
+                 <li>
+                   <a href="#">
+                     <i class=" icon-twitter"></i>
+                     twitter
+                   </a>
+                 </li>
+                 <li>
+                   <a href="#">
+                     <i class=" icon-google-plus"></i>
+                     google plus
+                   </a>
+                 </li>
+               </ul>
+             </li>
+             <li>
+               <a href="#">
+                 <i class="icon-bookmark"></i>
+                 bookmark
+               </a>
+             </li>
+             <li>
+               <a href="#">
+                 <span class="leaf-remove">
+                 <i class="icon-leaf"></i>
+                 <i class=" icon-remove-sign"></i>
+                 </span>
+                 branch out
+               </a>
+             </li>
+             <li>
+               <a href="#" class="important">
+                 <i class="icon-flag"></i>
+                 report
+               </a>
+             </li>
+           </ul>
+         </span>
+        </div>
+        <form class="form-inline search pull-left">
+          <div class="input-append">
+            <input type="text" class="input-xlarge" placeholder="search">
+            <button type="submit" class="btn"><i class="icon-search"></i></button>
+          </div>
+        </form>
+        <button  class="btn btn-warning">
+                         <span class="leaf-add">
+                 <i class="icon-leaf"></i>
+                 <i class=" icon-plus"></i>
+                 </span>
+        </button>
+        <h5 class="light_header name ui-inline-text"> <span class="verified"><i class="icon-ok"></i></span><%=@branch.name.humanize %></h5>
+        <div class="btm_shadow_r span10">
+          <div class="shadow-top"></div>
+        </div>
+    <% end %>
+<% end %>
+<% content_for :left_panel_content do %>
+    <% if content_for?(:left_panel_content)%>
+        <%= yield(:left_panel_content) %>
+    <% else %>
+        <div class="a_info">
+          <div class="a_nav">
+            <div class="divider-horizontal"></div>
+            <%= branch_sidebar(nav) %>
+            <% if current_user && current_user.can_edit?(@branch) %>
+                <div class="divider-horizontal"></div>
+                <div class="btns">
+                  <button class="btn btn-warning btn-block"  data-target="#post-modal" data-toggle="modal">
+                    <i class="icon-plus"></i> new post</button>
+                </div>
+                <div class="divider-horizontal"></div>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+<% end %>
+<% content_for :center_panel_content do %>
+    <%= yield(:center_panel_content) %>
+<% end %>
+<% content_for :chat_content do %>
+    <%= render :partial => 'chat_view' , locals: {nav:"Chat"} %>
+<% end %>
+<% content_for :javascript_chat_content do %>
+    <%= javascript_include_tag "chat/controller/app" %>
+<% end %>
+<%= render :template => 'layouts/layout1'  %>

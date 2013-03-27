@@ -1,0 +1,45 @@
+<% if current_user && current_user.can_edit?(@branch) && @requests.any? %>
+    <h3> groups requests</h3>
+    <%= form_tag batch_branch_memberships_path(@branch) do |form| %>
+        <table>
+          <% @requests.each do |req| %>
+              <tr>
+                <td><%= check_box_tag 'ids[]', req.user.id, false, :class => 'checkbox' %></td>
+                <td><%= link_to req.user.email, user_url(:id => req.user) %></td>
+              </tr>
+          <% end %>
+        </table>
+        <p>
+          Select one or more above and choose an action:<br/>
+          <input type="submit" name="commit" value='Accept' formmethod="post" style="font-weight:bold;"><br/>
+          <input type="submit" name="commit" value='Ignore'>
+        </p>
+    <% end %>
+<% end %>
+
+<% if current_user && current_user.member_of?(branch) %>
+    <div class="users">
+      <header class="ui-mini-header letter_pressed">
+        <h5 class="light_header p"><i class=" icon-group"></i> Branch ins
+        </h5>
+      </header>
+      <ul class="lv">
+        <% branch.memberships.all(:include => :user, :order => 'users.name').each do |membership| %>
+            <% if user = membership.user %>
+                <%= render :partial => 'user', :locals => {:user => user, :membership => membership} %>
+            <% end %>
+        <% end %>
+      </ul>
+    </div>
+<% else %>
+
+      <p class="alert alert-error">
+        This is a private branch. Only members of this branch are allowed to view brocasts, members and receive sms broadcasts
+        from this branch. <%= link_to branch_memberships_path(@branch), :method => 'post', class: "btn btn-mini btn-warning" do %>
+            <span class="leaf-add">
+              <i class="icon-leaf"></i>
+              <i class="icon-plus"></i>
+            </span>
+            <% end %>
+      </p>
+<% end %>

@@ -1,0 +1,43 @@
+<aside class=" left_panel">
+  <div class="shadow-top"></div>
+  <div class="left_panel_wrap">
+    <div class="inner">
+
+      <div class="a_info">
+        <div class="divider-horizontal"></div>
+        <div class="a_nav">
+          <ul class="nav nav-list">
+            <li class="<% if action_name == "show" %>active<% end %>">
+              <a href="<%= url_for branch_path(branch) %>"><i class="icon-reorder"></i>&nbsp;Latest</a>
+            </li>
+            <li class="<% if action_name == "edit" %>active<% end %>">
+              <a href="<%= url_for edit_branch_path(branch) %>"><i class="icon-pencil"></i>&nbsp;Edit</a>
+            </li>
+            <li class="<% if action_name == "index" %>active<% end %>">
+              <a href="<%= url_for branch_memberships_path(branch) %>"><i class="icon-leaf"></i>&nbsp;Branch ins<label class="badge badge-warning"><%= branch.memberships_count %></label></a>
+            </li>
+            <li class="<% if action_name == "sub_branches" %>active<% end %>">
+              <a href="<%= url_for sub_branches_branch_path(branch) %>"><i class="icon-sitemap"></i>&nbsp;Branches<label class="badge badge-success"><%= branch.children.size %></label></a></li>
+            <li class="<% if action_name == "admins" %>active<% end %>"><a href="<%= url_for admins_branch_path(branch) %>"><i class="icon-user-md"></i>&nbsp;Admins<label class="badge"><%= branch.admins.size %></label></a></li>
+            <li><a href="#"><i class="icon-info-sign"></i>&nbsp;About</a></li>
+          </ul>
+
+
+          <%= yield(:button) %>
+
+          <div class="divider-horizontal"></div>
+          <div class="branch_head letter_pressed">
+            <a class="avatar">
+              <img src="/assets/avatar.jpg" class="avatar_shadow little-rounded " height="50" width="50">
+            </a>
+            <div class="uinfo">
+              <h6 class="light_header ui-inline-text"><%= link_to branch.user.name,  branch.user %></h6>
+              <p class="meta">Joined <span class="date"></span> <%= time_ago_in_words branch.created_at %> ago <a class="role" href="#">head</a></p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>

@@ -1,0 +1,17 @@
+<aside id="left_panel" class="left_panel">
+  <div class="left_panel_wrap">
+      <div class="a_info">
+        <div class="a_nav">
+          <ul class="nav nav-list">
+            <%= nav_tab 'Home',user_root_url, current:current_tab,icon:{:class=>"icon-home"}%>
+            <li class="divider-horizontal"></li>
+            <%= nav_tab 'Tree',tree_url(current_user.tree), current:current_tab,icon:{:class=>"icon-sitemap"}%>
+           </ul>
+        </div>
+        <div class="shadow-bottom-wrap">
+          <div class="shadow-top"></div>
+        </div>
+      </div>
+       <%= yield :gutrees_all %>
+  </div>
+</aside>

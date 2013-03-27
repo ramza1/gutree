@@ -1,0 +1,27 @@
+<li class="user">
+  <a class="avatar">
+    <img src="/assets/image_6.jpg" height="50" width="50">
+  </a>
+  <div class="uinfo">
+    <h6 class="light_header ui-inline-text"><%= link_to user.name, user %></h6>
+    <p class="meta">joined <%= time_ago_in_words membership.created_at %> ago.
+      <% if user == @branch.user %>Branch manager.<% elsif user.can_edit?(@branch) %> Admin.<% end %>
+    <% if @can_edit %>
+          <span class="meta-links">
+          <%= link_to branch_membership_path(@branch, user.id), :remote => true, :method => :delete do %>
+              <i class="icon-trash"></i> Delete  |
+           <% end %>
+          <% if @branch.admin?(user, :exclude_global_admins) %>
+              <%= link_to branch_membership_path(@branch, user.id), :method => :put do %>
+                  <i class="icon-arrow-down"></i> Demote
+              <% end %>
+          <% else %>
+              <%= link_to branch_membership_path(@branch, user.id, :promote => true), :method => :put do %>
+                  <i class="icon-arrow-up"></i> Promote to admin
+              <% end %>
+          <% end %>
+          </span>
+    <% end %>
+    </p>
+  </div>
+</li>

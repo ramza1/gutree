@@ -1,0 +1,51 @@
+<% content_for :top_panel_stamp do %>
+    <div class="stamp">
+      <div class="btm_shadow_l">
+        <div class="shadow-top"></div>
+      </div>
+      <div class="stamp_wrap">
+        <div class="stamp_tp"></div>
+        <div class="stamp_bt"></div>
+        <div class="stamp_ct">
+          <%= image_tag "image_4.jpg" ,height:"140",width:"140"%>
+        </div>
+      </div>
+    </div>
+<% end %>
+<% content_for :top_panel_content do %>
+    <div class="user_meta">
+         <span class="btn-group">
+           <a class="btn dropdown-toggle " data-toggle="dropdown" href="#">
+             Action
+             <span class="caret"></span>
+           </a>
+           <ul class="dropdown-menu">
+             <!-- dropdown menu links -->
+           </ul>
+         </span>
+
+    </div>
+    <form class="form-inline search pull-left">
+      <div class="input-append">
+        <input type="text" class="input-xlarge" placeholder="search">
+        <button type="submit" class="btn"><i class="icon-search"></i></button>
+      </div>
+    </form>
+    <h5 class="light_header name ui-text-inline"> Paul Smith</h5>
+
+<% end %>
+<% content_for :left_panel_content do %>
+    <div class="a_info">
+      <div class="a_nav">
+        <div class="divider-horizontal"></div>
+        <%= user_sidebar("") %>
+      </div>
+    </div>
+<% end %>
+<% content_for :center_panel_content do %>
+    <div class="span8 ">
+      <% @title = "New Tree" %>
+      <%= render 'branch_form' %>
+    </div>
+<% end %>
+<%= render :template => 'layouts/layout1'  %>

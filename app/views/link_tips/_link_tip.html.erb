@@ -1,0 +1,130 @@
+<div id="tip-<%=link_tip.id%>" class="post item" data-collection_url=<%= tips_tree_branch_url(@tree,@branch,:format=>"js")%> >
+  <a class="avatar lt">
+    <%= image_tag link_tip.user.photo.url(:icon), :alt =>link_tip.user.name ,:width=>"50px",:height=>"50px",:class=>"avatar_shadow light-rounded"%>
+  </a>
+  <div class="post_container left_arrow">
+    <header>
+      <div class="btn-group ops">
+        <a class="btn ops-trigger rounded dropdown-toggle  btn-small" data-toggle="dropdown" href="#">
+          <i class=""></i>
+        </a>
+        <ul class="dropdown-menu  top_arrowed">
+          <li class="dropdown-submenu">
+            <a tabindex="-1" href="#">
+              <span class="ui-btn-inner">
+              <i class=" icon-share"></i>
+              share
+              </span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#">
+                   <span class="ui-btn-inner">
+                  <i class=" icon-facebook"></i>
+                  facebook
+                       </span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                   <span class="ui-btn-inner">
+                  <i class=" icon-twitter"></i>
+                  twitter
+                       </span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                   <span class="ui-btn-inner">
+                  <i class=" icon-google-plus"></i>
+                  google plus
+                       </span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="disabled">
+            <a href="#" class="op">
+               <span class="ui-btn-inner">
+              <i class="icon-thumbs-up"></i>
+              <span class="ui-text" data-state="loading">loading...</span>
+                   </span>
+            </a>
+          </li>
+          <li class="error">
+            <a href="#" class="important op">
+               <span class="ui-btn-inner">
+              <i class="icon-flag"></i>
+              <span class="ui-text" data-state="error">retry, error !</span>
+                   </span>
+            </a>
+          </li>
+          <li >
+            <a href="#" class="op" data-action="action">
+               <span class="ui-btn-inner">
+              <i class="icon-flag"></i>
+              <span class="ui-text" >action</span>
+                   </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="post_title">
+        <a href="#"><%=link_tip.user.name %></a>
+        <p class="tip meta">
+          <span class="time" title="<%= format_date_b(link_tip.created_at) %>">
+            <i class="icon-time"></i>&nbsp;<%= format_date_c(link_tip.created_at) %></span>
+              <span class="separator tip-divider-vertical">&nbsp;  |  &nbsp;</span>
+              <span class="post_type" title="link"><i class="icon-link"></i>&nbsp;Link</span>
+        </p>
+      </div>
+    </header>
+    <% if link_tip.content%>
+
+        <div class="divider-horizontal"></div>
+        <div class="post_body">
+          <p>
+            <%= link_tip.content %>
+          </p>
+        </div>
+    <% end %>
+    <% if link_tip.link.url.present? %>
+        <p class="link">
+          <%= link_to link_tip.link.url,link_tip.link.url%>
+       </p>
+    <% end %>
+
+
+        <div class="post_comments">
+          <div class="post_comments_inner">
+            <% if !link_tip.comments.empty? %>
+            <div class="post_comment">
+              <a class="avatar">
+                <img src="/assets/image_4.jpg" width="32" height="32" class="avatar_shadow light-rounded"/>
+              </a>
+              <div class="post_comment_data">
+                <header>
+                  <h6 class="light_header ui-inline-text ui-inline letter_pressed"><a href="#">Cynthia</a></h6>
+                  <span class="meta letter_pressed time"> 12:30</span>
+                </header>
+                <p class="comment_body letter_pressed">
+                  I see dead deer on the back of trucks all the time right now.﻿
+                </p>
+              </div>
+            </div>
+            <% end %>
+            <div class="comment_input">
+              <input class="" type="text" placeholder="Add a comment..."/>
+            </div>
+          </div>
+        </div>
+        <div class="read-more">
+                     <span class="meta ">
+                      <span class="badge badge-warning">0</span> <i class="icon-comments"></i> comments
+                       <% if !link_tip.comments.empty? %>
+                       <a href="#" class="important_link">see all <i class="icon-caret-down"></i></a>
+                       <% end %>
+                     </span>
+        </div>
+  </div>
+</div>

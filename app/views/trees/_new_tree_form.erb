@@ -1,0 +1,22 @@
+<div class="form-box">
+  <header class="ui-min-header">
+    <h3 class="letter_pressed light_header ">Request a Tree</h3>
+  </header>
+    <%= form_for @request,:url=>create_request_trees_url, :html => {:class => 'form-vertical' } do |f| %>
+      <div class="form-body">
+        <div id="name">
+          <%= f.field_item_wrap :recipient_email do %>
+              <%= f.label(:recipient_email,:class=>"control-label",:data => { :required =>"true"} )  do %>
+                  Email <a class="help-info " rel="popover" data-placement="left" data-content="Enter a valid company email address." data-original-title="Name" ><i class="icon-question-sign"></i></a>
+              <% end %>
+              <%= f.field_item :recipient_email do %>
+                  <%= f.text_field :recipient_email,:placeholder=>"your company email"%>
+              <% end %>
+          <% end %>
+
+          <button type="submit" class="btn btn-primary" > <i class="icon-share-alt"></i> Send Request</button>
+          <a class="btn" data-dismiss="modal">Cancel</a>
+        </div>
+      </div>
+    <% end %>
+ </div>

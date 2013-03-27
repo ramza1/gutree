@@ -1,0 +1,3 @@
+(function(){
+    return {tips:'<%= escape_javascript(render @tips)%>',params:{page:<%=@data[:params][:page]%>,per_page:<%=@data[:params][:per_page]%>},empty:<%=@data[:empty]%>,remaining:<%=@data[:remaining]%>}
+})()

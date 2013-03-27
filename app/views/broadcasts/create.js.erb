@@ -1,0 +1,6 @@
+var li = $("<%= j render @broadcast%>").hide();
+$("#broadcast_for_<%= dom_id(@broadcast.branch)%>").prepend(li);
+li.fadeIn('slow');
+$("#new_broadcast")[0].reset();
+alert("submitted");
+$('#post-modal').modal('hide')

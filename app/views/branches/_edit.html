@@ -1,0 +1,92 @@
+<div id="user_states" class="modal-form small no-shadow">
+    <div class="modal-header">
+    </div>
+    <div class="form-box">
+        <header class="ui-min-header">
+            <h3 class="letter_pressed light_header ">Edit Branch</h3>
+        </header>
+        <%= simple_form_for(@branch, :method => "put",:url => tree_branch_url(@tree,@branch),:html=>{:id=>"edit_branch_form",:data=>{:url=>tree_branch_url(@tree,@branch,:format=>"js")}}) do |f| %>
+        <div class="form-body  row-fluid">
+            <div class="span3">
+                <div class="steps form-container">
+                    <% if @branch.photo.present? %>
+                    <a class="preview photo_chooser">
+                        <div class="image_wrap">
+                            <div class="image-container">
+                                <%= image_tag @branch.photo.url(:croppable), :alt => @branch.name %>
+                                <span class="prev_status">change photo</span>
+                            </div>
+                        </div>
+              <span class="loading_pane help-inline">
+                <i class="icon-picture"></i> preview
+              </span>
+                    </a>
+                    <% else %>
+                    <a id="pick" class="upload_btn photo_chooser" >
+              <span class="ui-btn-inner">
+              <span class="ui-icon"><i class="icon-picture"></i></span>
+                <span class="ui-text">Pick a photo or drag photo here</span>
+              </span>
+                    </a>
+                    <% end %>
+                    <div id="profile_upload_photo" data-upload_url="<%= change_photo_tree_branch_url(current_user,:format=>"json")%>"></div>
+                    <div id="profile_upload_photo_preview"></div>
+               </div>
+            </div>
+
+        <div class="span9">
+            <div class="form-container rt">
+                <%= f.error_notification %>
+                <div class="form-inputs ">
+                    <%= f.input :name,:input_html => {:class=>"input_padding_extra"} %>
+                    <%= f.input :description,:as=>:text,:input_html => {:rows=>"3",:class=>"input_padding_extra"} %>
+                    <%= f.input :tag_list, :label => 'Tags', :label_html => {
+                    :data=>{
+                    :placement=>"right",
+                    :content=>"list the categories or words you feel that this tree belongs to. eg entertainment, fashion, arts, etc.",
+                    :title=>"Tags",
+                    },
+                    :rel=>"popover",
+                    :class => 'popover_trigger'
+                    } ,
+                    :wrapper_html => { :class => 'control-group' },:as=>:text,:input_html => {:rows=>"3",:data_url=>"",:class=>"tag-input listbuilderinput"},:hint => 'type a name and press enter or comma.' %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <button type="submit" id="save" class="btn save btn-primary">Save</button>
+    </div>
+
+    <% end %>
+</div>
+</div>
+<script id="post-upload-progress-tmpl" type="text/x-jquery-tmpl">
+    <div class="photo-upload-progress">
+        <span class="help-inline"><i class="icon-picture"></i> <span class="status">uploading 40%</span></span>
+        <div class="progress progress-success progress-striped active">
+            <div class="bar" style="width:40%"></div>
+        </div>
+    </div>
+</script>
+<script id="post-upload-error-tmpl" type="text/x-jquery-tmpl">
+    <div class="photo-upload-error">
+        <div class="alert alert-error">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <i class="icon-warning-sign"></i> <strong> Error occurred!</strong>
+        </div>
+    </div>
+</script>
+<script id="post-upload-preview-tmpl" type="text/x-jquery-tmpl">
+    <a class="preview photo_chooser">
+        <div class="image_wrap">
+            <div class="image-container">
+                <img src='${src}'/>
+            </div>
+        </div>
+              <span class="loading_pane help-inline">
+                <i class="icon-picture"></i> preview
+              </span>
+        </div>
+    </a>
+</script>

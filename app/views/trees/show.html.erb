@@ -1,0 +1,114 @@
+<%= current_aux_nav("") %>
+<div id="app">
+<div class="container-fluid">
+    <% content_for :navigation do %>
+        <%= current_main_nav("Tree") %>
+    <% end %>
+    <% content_for :tool_bar do %>
+    <div class="toolbar" align="center">
+      <form class="form-inline navbar-search search">
+        <div class="input-append btn-group">
+          <input type="text" class="search-query input-xlarge" placeholder="search for tips ">
+          <button class="btn btn-primary" type="button"><i class="icon-search"></i></button>
+          <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <!-- dropdown menu links -->
+          </ul>
+        </div>
+      </form>
+      <% if @can_edit %>
+          <a href="#newBranchDialog" id="newBranchTrigger" class="btn btn-primary control" data-target="#newBranchDialog">
+            <i class="icon-plus"></i> New Branch</a>
+     <% end %>
+    </div>
+<% end %>
+   <section id="main" class=" center_panel">
+     <%= content_for_nav("Branches","") %>
+   </section>
+ </div>
+
+<div class="right_panel_view">
+  <%= current_tree_nav("Branches") %>
+  <div class="right_panel_drop">
+    <div class="inner"></div>
+  </div>
+</div>
+</div>
+
+
+  <% if @can_edit %>
+      <%= render :partial => "branches/new_branch_dialog" %>
+  <% end %>
+
+<% content_for :javascript_contents do %>
+    <%= javascript_include_tag "controller/trees" %>
+<% end %>
+<div id="editView"></div>
+
+<script id="loading-dialog-tmpl" type="text/x-jquery-tmpl">
+  <div class="loading-dialog warning modal-form modal hide">
+    <div class="inner">
+      <header class="ui-min-header">
+        <h3 class="letter_pressed light_header message">{{html message}}</h3>
+        <button type="button" class="close">×</button>
+      </header>
+    </div>
+  </div>
+</script>
+
+<script id="branch-item-tmpl" type="text/x-jquery-tmpl">
+  <li class="item polaroid" data-url="${Branch_url}">
+    <a>
+      <div class="inner">
+
+        <header class="ui-mini-header">
+          <h5 class="light_header  ui-inline-text letter_pressed">
+            <i class="icon-leaf"></i>
+            ${name}
+          </h5>
+        </header>
+        <div class="brand_tree">
+          <div class="brand_link">
+            <img width="100" height="100" src="${icon_url}" class=""/>
+          </div>
+          <div class="meta_items">
+            <p class="meta">created <span class="date" >${created_time_ago}</span></p>
+            <p class="tip meta">
+                   <span class="members_count" title="members">
+                   <i class=" icon-group"></i> <span class="badge badge-success">${memberships_count}</span>
+                   </span>
+              <span class="separator tip-divider-vertical">&nbsp;  |  &nbsp;</span>
+                   <span class="branches_count" title="branches">
+                   <i class=" icon-leaf"></i> <span class="badge badge-success">${sub_tree_size}</span>
+                   </span>
+            </p>
+          </div>
+        </div>
+        {{if latest}}
+         <div class="recent_post">
+          <article class="image_link info_block">
+            <div class="avatar">
+              <img src="${latest.icon_url}" height="50" width="50">
+            </div>
+            <div class="info">
+              <h6 class="light_header ui-inline-text">
+              </h6>
+              <div class="tip meta ui-inline-text">
+               <span class="time" title="2nd October, 2012">
+                 <i class="icon-time"></i>${latest.human_time}
+               </span>
+                <span class="separator tip-divider-vertical">&nbsp;  |  &nbsp;</span>
+              <span class="tip" title="tips">
+                <i class="icon-exclamation-sign"></i> tip
+              </span>
+              </div>
+            </div>
+          </article>
+        </div>
+        {{/if}}
+      </div>
+    </a>
+  </li>
+</script>

@@ -1,0 +1,38 @@
+<% content_for :default_user_auth do %>
+    <ul class="nav pull-right">
+      <%= nav_tab 'login',root_url, current:"",icon:{:class=>"icon-lock"}%>
+    </ul>
+<% end %>
+<div id="main_navbar" class="navbar navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+      <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <%= link_to root_url,:class => "brand" do%>
+         <%= image_tag "branch_icon.png", width:"32",height:"32" %>
+      <% end %>
+      <div class="container-fluid nav-collapse">
+          <%= yield(:aux_navigation) %>
+        <% if current_user %>
+            <ul class="user_nav nav  pull-right">
+              <li class="divider-vertical"></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  You
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "home",user_root_path%></li>
+                  <li><%= link_to "logout",user_sign_out_path,:method => :delete %> </li>
+                </ul>
+              </li>
+            </ul>
+        <% else %>
+        <%=   yield(:user_auth)    %>
+      <% end %>
+        <%= yield(:tool_bar) %>
+      </div>
+  </div>
+</div>

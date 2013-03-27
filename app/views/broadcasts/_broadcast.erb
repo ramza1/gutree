@@ -1,0 +1,49 @@
+<div class="post">
+  <div class="post_container">
+    <header>
+      <%= render "broadcasts/broadcast_btn" %>
+      <div class="post_title">
+        <h5 class="light_header">
+          <%= link_to broadcast.title, broadcast %>
+        </h5>
+        <p class=" meta">
+          <span class="time" title="<%= broadcast.created_at.strftime("%m-%d-%Y") %>"><i class="icon-time"></i> <%= broadcast.created_at.strftime("%I:%M")  %> </span>
+          <span class="separator">&nbsp;  |  &nbsp;</span>
+          <span class="post_type"><i class="icon-calendar"></i> Event</span>
+        </p>
+      </div>
+    </header>
+    <div class="divider-horizontal"></div>
+    <div class="post_body">
+      <p>
+        <%= simple_format(broadcast.message) %>
+      </p>
+
+    </div>
+    <% if broadcast.photo.present? %>
+    <a class="post_image">
+      <div class="shadow-top"></div>
+      <%= image_tag broadcast.photo(:thumb) %>
+    </a>
+    <% end %>
+    <div class="post_comments">
+      <div class="post_comments_inner">
+
+        <p class="meta letter_pressed">
+          <span class="comment_count"><i class=" icon-comments-alt"></i> <%= pluralize(broadcast.comments_count, "comment") %></span>
+          <a href="<%= url_for broadcast %>" class="comment_anchor"><i class="icon-caret-down"></i> see all</a>
+        </p>
+       <div id="<%= dom_id(broadcast) %>">
+          <%= render broadcast.comments.includes(:user) %>
+       </div>
+        <% if current_user && current_user.member_of?(broadcast.branch)%>
+        <%= form_for [broadcast, broadcast.comments.new], remote: true, html: {id: "new_comment_#{dom_id(broadcast)}"} do |f| %>
+        <div class="comment_input">
+          <%= f.text_field :body, placeholder: "Add Comment..." %>
+        </div>
+        <% end %>
+       <% end %>
+      </div>
+    </div>
+  </div>
+</div>

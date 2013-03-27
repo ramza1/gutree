@@ -1,0 +1,65 @@
+<div class="form-box">
+   <header class="ui-min-header">
+     <h3 class="letter_pressed light_header "> <%= @title %></h3>
+   </header>
+    <%= form_for @branch,:url=>create_tree_user_url, :html => { multipart: true,:class => 'form-vertical' } do |f| %>
+      <div class="form-body">
+        <%#= render @branch.parent if @branch.parent %>
+        <%= f.hidden_field :parent_id %>
+        <%= f.field_item_wrap :name do %>
+            <%= f.label(:name,:class=>"control-label",:data => { :required =>"true"} )  do %>
+              * Name <a class="help-info " rel="popover" data-content="A unique name for this tree." data-original-title="Name" ><i class="icon-question-sign"></i></a>
+            <% end %>
+            <%= f.field_item :name do %>
+                <%= f.text_field :name %>
+            <% end %>
+        <% end %>
+        <%= f.field_item_wrap :description do %>
+            <%= f.label(:description,:class=>"control-label")  do %>
+              * About <a class="help-info " rel="popover" data-content="Describe your tree . what is it about?" data-original-title="About" ><i class="icon-question-sign"></i></a>
+            <% end %>
+            <%= f.field_item :description do %>
+                <%= f.text_area :description,:class => 'text_area',:rows=>3%>
+            <% end %>
+        <% end %>
+        <%= f.field_item_wrap :icon do %>
+            <%= f.label(:icon,:class=>"control-label")  do %>
+                Logo <a class="help-info " rel="popover" data-content="Choose an  image or photo to use as the logo of this tree." data-original-title="Logo" ><i class="icon-question-sign"></i></a>
+            <% end %>
+            <%= f.field_item  :icon do %>
+                <%= f.file_field :icon ,class:"xfile"%>
+            <% end %>
+        <% end %>
+
+        <%= f.field_item_wrap :tag_list do %>
+            <%= f.label(:tag_list,:class=>"control-label")  do %>
+               Tags <a class="help-info " rel="popover" data-content="list the categories or words you feel that this tree belongs to in your words. eg entertainment, fashion, arts, etc." data-original-title="Tag" ><i class="icon-question-sign"></i></a>
+            <% end %>
+            <%= f.field_item :tag_list ,"type a name and press enter or comma." do %>
+                <%= f.text_area :tag_list,:class => 'listbuilderinput' %>
+      <% end %>
+        <% end %>
+
+        <%= f.field_item_wrap :categories do %>
+            <%= f.label(:categories,:class=>"control-label")  do %>
+                Select Categories <a class="help-info " rel="popover" data-content="Select categories from our list of predefined categories that this tree belongs to." data-original-title="Category" ><i class="icon-question-sign"></i></a>
+            <% end %>
+            <%= f.field_item  :categories do %>
+                <%= f.collection_select :category_ids,Category.all,:id,:name,{},{multiple:true,class:"chzn-select"}%>
+            <% end %>
+        <% end %>
+      </div>
+      <div class="form-actions">
+          <%= f.button :create, class: "btn btn-warning"  do %>
+              <i class="icon-plus"></i> create
+          <% end %>
+          <% if @branch.new_record? && @branch.parent_id.present? %>
+              <%= link_to "Back", @branch.parent, class: "btn" %>
+          <% elsif @branch.new_record? %>
+              <%= link_to "Cancel", branches_path, class: "btn" %>
+          <% else %>
+              <%= link_to "Back", @branch, class: "btn" %>
+          <% end %>
+        </div>
+    <% end %>
+ </div>

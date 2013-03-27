@@ -1,0 +1,257 @@
+<% content_for :tool_bar do %>
+    <div class="toolbar" align="center">
+      <form class="form-inline navbar-search search">
+      <div class="input-append btn-group">
+        <input type="text" class="search-query input-xlarge" placeholder="search for tips ">
+        <button class="btn btn-primary" type="button"><i class="icon-search"></i></button>
+        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <!-- dropdown menu links -->
+        </ul>
+      </div>
+    </form>
+    </div>
+<% end %>
+<% content_for :navigation do %>
+    <%= current_main_nav("Home") %>
+<% end %>
+<section id="main" class="center_panel">
+<div class="container-fluid">
+<div class="row-fluid">
+<div class="span8 posts">
+  <div class="post">
+    <a class="avatar lt">
+      <img src="/assets/image_8.jpg" class="avatar_shadow light-rounded" width="50px" height="50px"/>
+    </a>
+    <div class="post_container left_arrow">
+      <header>
+        <div class="btn-group">
+          <a class="btn  dropdown-toggle btn-small" data-toggle="dropdown" href="#">
+            <i class=" icon-caret-down"></i>
+          </a>
+          <ul class="dropdown-menu top_arrowed">
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="#">
+                <i class=" icon-share"></i>
+                share
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">
+                    <i class=" icon-facebook"></i>
+                    facebook
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class=" icon-twitter"></i>
+                    twitter
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class=" icon-google-plus"></i>
+                    google plus
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+                <i class="icon-bookmark"></i>
+                bookmark
+              </a>
+            </li>
+            <li>
+              <a href="#" class="important">
+                <i class="icon-flag"></i>
+                report
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="post_title">
+          <h5 class="light_header"><a href="#">Relevant to me for the month of October according to Google.</a></h5>
+          <p class="tip meta">
+            <span class="time" title="2nd October, 2012"><i class="icon-time"></i>15:55 </span>
+            <span class="separator tip-divider-vertical">&nbsp;  |  &nbsp;</span>
+            <span class="post_type"><i class="icon-picture"></i> Photo</span>
+            <span class="separator tip-divider-vertical">&nbsp;  |  &nbsp;</span>
+              <span class="tip meta">Tip
+              <span class="badge badge-success">13</span>
+              </span>
+          </p>
+        </div>
+      </header>
+      <div class="divider-horizontal"></div>
+      <div class="post_body">
+        <p>
+          Extension of my life - The Internet - also the place where I met most of these fabulous people through sheer...serendipity.
+        </p>
+
+      </div>
+
+      <a class="post_image">
+        <div class="shadow-top"></div>
+        <img src="/assets/image_10.jpg"/>
+      </a>
+      <div class="post_comments">
+        <div class="post_comments_inner">
+          <div class="post_comment">
+            <a class="avatar">
+              <img src="/assets/image_4.jpg" width="32" height="32" class="avatar_shadow light-rounded" />
+            </a>
+            <div class="post_comment_data">
+              <header>
+                <h6 class="light_header ui-inline-text ui-inline letter_pressed"><a href="#">Cynthia</a></h6>
+                <span class="meta letter_pressed time"> 12:30</span>
+              </header>
+              <p class="comment_body letter_pressed">
+                I see dead deer on the back of trucks all the time right now.﻿
+              </p>
+            </div>
+          </div>
+          <div class="divider-horizontal"></div>
+          <div class="comment_input">
+            <input class="" type="text" placeholder="Add a comment..."/>
+          </div>
+        </div>
+      </div>
+      <div class="read-more">
+                     <span class="meta ">
+                      <span class="badge badge-warning">13</span> <i class="icon-comments"></i> comments
+                       <a href="#" class="important_link">see all <i class="icon-caret-down"></i></a>
+                     </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="span4 side_bar">
+  <div class="inner">
+    <div class=" trees">
+      <header class="ui-mini-header letter_pressed">
+        <h5 class="light_header p"><i class="icon-star"></i> Popular Tips
+        </h5>
+      </header>
+      <ul class="tree_list nav">
+        <li class="info_block">
+          <a class="avatar">
+            <img src="/assets/image_6.jpg" height="50" width="50">
+          </a>
+          <div class="info">
+            <h6 class="light_header ui-inline-text"><a href="#">Relevant To Me For The Month Of October According To Google.</a></h6>
+            <p class="tip meta">
+              <span class="time" title="2nd October, 2012"><i class="icon-time"></i>15:55 </span>
+              <span class="separator tip-divider-vertical">&nbsp;  |  &nbsp;</span>
+              <span class="tip meta">Tip
+              <span class="badge badge-success">13</span>
+              </span>
+            </p>
+          </div>
+        </li>
+        <li class="info_block">
+          <a class="avatar">
+            <img src="/assets/image_6.jpg" height="50" width="50">
+          </a>
+          <div class="info">
+            <h6 class="light_header ui-inline-text"><a href="#">Relevant To Me For The Month Of October According To Google.</a></h6>
+            <p class="tip meta">
+              <span class="time" title="2nd October, 2012"><i class="icon-time"></i>15:55 </span>
+              <span class="separator tip-divider-vertical">&nbsp;  |  &nbsp;</span>
+              <span class="tip meta">Tip
+              <span class="badge badge-success">13</span>
+              </span>
+            </p>
+          </div>
+        </li>
+        <li class="info_block">
+          <a class="avatar">
+            <img src="/assets/image_6.jpg" height="50" width="50">
+          </a>
+          <div class="info">
+            <h6 class="light_header ui-inline-text"><a href="#">Relevant To Me For The Month Of October According To Google.</a></h6>
+            <p class="tip meta">
+              <span class="time" title="2nd October, 2012"><i class="icon-time"></i>15:55 </span>
+              <span class="separator tip-divider-vertical">&nbsp;  |  &nbsp;</span>
+              <span class="post_type"><i class="icon-picture"></i> Photo</span>
+              <span class="separator tip-divider-vertical">&nbsp;  |  &nbsp;</span>
+              <span class="tip meta">Tip
+              <span class="badge badge-success">13</span>
+              </span>
+            </p>
+          </div>
+        </li>
+      </ul>
+      <p class="meta anchor">
+        <span class="badge badge-warning">13</span> more
+        <a href="#" class="more_link"> see all <i class="icon-caret-down"></i></a>
+      </p>
+    </div>
+    <div class=" trees">
+      <header class="ui-mini-header letter_pressed">
+        <h5 class="light_header p"><i class="icon-money"></i> Sponsored
+        </h5>
+      </header>
+      <ul class="tree_list nav">
+        <li class="info_block">
+          <a class="avatar">
+            <img src="/assets/image_6.jpg" height="50" width="50">
+          </a>
+          <div class="info">
+            <h6 class="light_header ui-inline-text"><a href="#">Samsung Nigeria</a></h6>
+            <p class="meta">
+              <span class="tree"><i class=" icon-sitemap"></i> <span class=""> 51</span></span>
+              <span class="dot"></span>
+              <span class="leaf"><i class="icon-leaf"></i> <span class=""> 68</span></span>
+            </p>
+            <div class="categories">
+              <p class=" meta"><i class=" icon-tag"></i> Tags:
+                <a href="#">Education</a>,
+                <a href="#">Sports</a>
+              </p>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <p class="meta anchor">
+        <span class="badge badge-warning">13</span> more
+        <a href="#" class="more_link"> see all <i class="icon-caret-down"></i></a>
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section>
+<div class="right_panel_view">
+  <aside id="branch" class="right_panel">
+    <div class="inner branch">
+      <div class="polaroid photo">
+        <%= image_tag current_user.photo.url(:thumb), :alt =>current_user.name %>
+      </div>
+      <header class="letter_pressed name">
+        <h5 class="light_header   ui-inline-text " title="<%= current_user.name %>">
+            <%= current_user.name %>
+        </h5>
+      </header>
+      <div class="divider-horizontal"></div>
+      <ul class="nav nav-list">
+        <li class="active"><a href="#">
+          <div class="ui-btn-inner"> <i class="icon-tasks"></i> Stream </div></a></li>
+        <li><a href="#">
+          <div class="ui-btn-inner"><i class=" icon-leaf"></i> Branches</div></a></li>
+        <li><a href="#">
+          <div class="ui-btn-inner"><i class=" icon-exclamation-sign"></i>  My Tips</div> </a></li>
+        <li><a href="#">
+          <div class="ui-btn-inner"><i class=" icon-sitemap"></i> Trees</div> </a></li>
+        <li><a href="#">
+          <div class="ui-btn-inner"><i class=" icon-pencil"></i>  Edit Profile</div></a> </li>
+      </ul>
+    </div>
+  </aside>
+  <div class="right_panel_drop">
+    <div class="inner"></div>
+  </div>
+</div>

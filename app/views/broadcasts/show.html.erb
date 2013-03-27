@@ -1,0 +1,13 @@
+<%= content_for(:publisher_content) do %>
+    <div class="row">
+      <div class="span8  branch_post">
+        <div class="posts" id="broadcast_for_<%= dom_id(@branch_details)%>">
+          <%= render @broadcast %>
+        </div>
+      </div>
+      <div class="span4 side_bar">
+        <%= render "branches/recommended_branches", branch: @branch_details %>
+        <%= render "sponsored_branches" %>
+      </div>
+    </div>
+<% end %>

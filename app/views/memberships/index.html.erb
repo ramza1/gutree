@@ -1,0 +1,43 @@
+<%= content_for :publisher_content do %>
+    <div class="row">
+    <div class="span8  branch_post">
+
+    <div class="posts">
+      <div class="post">
+        <div class="post_container">
+          <header>
+            <div class="btn-group">
+              <a class="btn btn-mini" href="<%= url_for @branch %>">
+                <i class="icon-share-alt"></i>
+              </a>
+            </div>
+            <div class="post_title">
+              <h5 class="light_header">Members Of <%= link_to @branch.name, @branch  %></h5>
+              <p class=" meta">
+                <span class="post_type"><i class="icon-leaf"></i> <%= pluralize(@branch.memberships_count, "Branch In") %></span>
+                <span class="separator">&nbsp;  |  &nbsp;</span>
+                <b>About:</b> <%= truncate @branch.description, :length => 100 %>
+              </p>
+            </div>
+          </header>
+          <div class="divider-horizontal"></div>
+          <div class="post_body">
+           <% if @branch.private? %>
+             <%= render "private_view", branch: @branch %>
+           <% else %>
+             <%= render "public_view", branch: @branch %>
+           <% end %>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+      <div class="span4 side_bar">
+            <%= render "branches/recommended_branches", branch: @branch %>
+            <%= render "sponsored_branches" %>
+      </div>
+    </div>
+
+<% end %>

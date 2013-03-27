@@ -1,0 +1,78 @@
+<li class="item polaroid" id="branch_<%=branch.id%>" data-url="<%= tree_branch_url @tree,branch %>">
+  <a href="<%= tree_branch_url @tree,branch %>">
+    <div class="inner">
+
+      <header class="ui-mini-header">
+        <h5 class="light_header  ui-inline-text letter_pressed">
+          <i class="icon-leaf"></i>
+          <%= branch.name %>
+        </h5>
+
+        <div class="actions btn-group ops">
+          <button class="btn ops-trigger dropdown-toggle rounded_all_thick letter_pressed dropdown-toggle btn-small" data-toggle="dropdown" >
+            <span class="inner">
+            <i class=" icon-caret-down"></i>
+            </span>
+          </button>
+          <ul class="dropdown-menu top_arrowed">
+            <li data-action="branch:edit" data-url="<%= edit_tree_branch_url @tree,branch,:format=>"js" %>">
+              <div class="op">
+              <span class="ui-btn-inner"  >
+                <i class=" icon-pencil"></i>
+                Edit
+              </span>
+             </div>
+            </li>
+            <li data-action="branch:delete">
+              <div class="op" >
+              <span class="ui-btn-inner"  >
+                <i class=" icon-remove"></i>
+                Delete
+              </span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <div class="brand_tree">
+        <div class="brand_link">
+          <%= image_tag branch.photo.url(:icon_2x), :alt => branch.name %>
+        </div>
+        <div class="meta_items">
+          <p class="meta">created <span class="date"><%= distance_of_time_in_words_to_now(branch.created_at) %> ago</span></p>
+          <p class="tip meta">
+                   <span class="members_count" title="members">
+                   <i class=" icon-group"></i> <span class="badge badge-success"><%= branch.memberships_count%></span>
+                   </span>
+            <span class="separator tip-divider-vertical">&nbsp;  |  &nbsp;</span>
+                   <span class="branches_count" title="branches">
+                   <i class=" icon-leaf"></i> <span class="badge badge-success"><%= branch.descendants.count %></span>
+                   </span>
+          </p>
+        </div>
+      </div>
+      <div class="recent_post">
+        <article class="image_link info_block">
+          <div class="avatar">
+            <img src="/assets/image_5.jpg" height="50" width="50">
+          </div>
+          <div class="info">
+            <h6 class="light_header ui-inline-text">
+              Relevant To Me For The Month Of October According To Google
+            </h6>
+              <div class="tip meta ui-inline-text">
+               <span class="time" title="2nd October, 2012">
+                 <i class="icon-time"></i>15:55
+               </span>
+                <span class="separator tip-divider-vertical">&nbsp;  |  &nbsp;</span>
+              <span class="tip" title="tips">
+                <i class="icon-exclamation-sign"></i> tip
+              </span>
+              </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </a>
+</li>
+

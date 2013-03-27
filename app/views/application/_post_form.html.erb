@@ -1,0 +1,51 @@
+<div id="post-modal" class="modal hide fade">
+  <%= form_for [branch, @broadcast], :remote => true do |f| %>
+  <div class="modal-header">
+    <h5 class="light_header ui-text-inline letter_pressed">What's new?
+      <div class="controls btn-group pull-right">
+        <a href="#" class="btn" onclick="$('#photo-block').toggle('slide')"><i class="icon-picture"></i></a>
+      </div></h5>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <div class="shadow-wrap">
+      <div class="shadow-top"></div>
+    </div>
+  </div>
+  <div class="modal-body ">
+    <div class="post_input_container">
+      <div class="post_input_inner">
+        <div class="post_input">
+          <div class="post_input_title">
+            <%= f.label :title %>
+            <%= f.text_field :title %>
+          </div>
+          <div class="post_input_body">
+            <%= f.label :message, "Message"%>
+            <%= f.text_area :message %>
+          </div>
+          <div id="photo-block" style="display:none;">
+            <%= f.field_item_wrap :photo_tips do %>
+                <%= f.label(:photo_tips,:class=>"control-label")  do %>
+                    Photo Caption <a class="help-info " rel="popover" data-content="Upload a photo caption" data-original-title="Logo" ><i class="icon-question-sign"></i></a>
+                <% end %>
+                <%= f.field_item  :photo_tips do %>
+                    <%= f.file_field :photo_tips ,class:"xfile"%>
+                <% end %>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="shadow-wrap">
+      <div class="shadow-bottom"></div>
+    </div>
+    <button class="btn btn-primary" type="submit" id="id_attach">
+      <i class="icon-share-alt"></i>
+      post
+    </button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+  <% end %>
+</div>

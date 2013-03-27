@@ -1,0 +1,15 @@
+<div class="post_comment">
+  <a class="avatar">
+    <img src="/assets/image_4.jpg" width="32" height="32" class="avatar_shadow light-rounded" />
+  </a>
+  <div class="post_comment_data">
+    <header>
+      <h6 class="light_header ui-inline-text ui-inline letter_pressed"><%= link_to comment.user.name %></h6>
+      <span class="meta letter_pressed time"> <%= comment.created_at.strftime("%I:%M")  %></span>
+    </header>
+    <p class="comment_body letter_pressed">
+      <%= comment.body %>
+    </p>
+  </div>
+</div>
+<div class="divider-horizontal"></div>

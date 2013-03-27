@@ -1,0 +1,23 @@
+<% content_for :tool_bar do %>
+    <div class="toolbar" align="center">
+      <form class="form-inline navbar-search search">
+        <div class="input-append btn-group">
+          <input type="text" class="search-query input-xlarge" placeholder="search for tips ">
+          <button class="btn btn-primary" type="button"><i class="icon-search"></i></button>
+          <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <!-- dropdown menu links -->
+          </ul>
+        </div>
+      </form>
+    </div>
+<% end %>
+
+<%= render "edit" %>
+
+</div>
+<% content_for :javascript_contents do %>
+    <%= javascript_include_tag "controller/profiles" %>
+<% end %>
