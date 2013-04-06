@@ -1,6 +1,8 @@
 //= require strophe/base64
 //= require strophe/md5
 //= require strophe/core
+//= require webrtc/TB.min
+//= require adapter
 //= require model/chats
 //= require controller/tab
 jQuery(function($){
@@ -156,10 +158,10 @@ jQuery(function($){
             var branch_jid = Strophe.getBareJidFromJid(from);
             var user_id=Strophe.getResourceFromJid(from)
             console.log('user_id',user_id)
-            var body = $(msg).children("body").text();
+            //this.App.connection.bind("sessionDescriptionMessage",this.onMessage);
             var conversation=Conversation.findByAttribute('user_id',user_id)
             if(conversation){
-                this.createMessage(body,conversation)
+                this.handleChatMessage(msg,conversation)
             }else{
                 var contact=Contact.findByAttribute('user_id',user_id)
                 if(contact){
@@ -167,27 +169,40 @@ jQuery(function($){
                         false,
                         created_by_local_user:false,
                         callback:this.proxy(function(conversation){
-                            this.createMessage(body,conversation)
+                            this.handleChatMessage(msg,conversation)
                         })
                     })
                 }
             }
             return true;
         },
-        createMessage:function(body,conversation){
-             var msg=Message.create({
-                from:conversation.user,
-                to:this.App.user,
-                conversation:conversation,
-                body:body,
-                html:null,
-                type:"chat",
-                date:new Date()
-            })
-            conversation.messages.push(msg)
-            conversation.last_message=msg;
-            conversation.save()
+        handleChatMessage:function(msg,conversation){
+            if($(msg).children("sd").length>0) {
+              this.handleSessionMessage(msg,conversation)
+            }else{
+                var body = $(msg).children("body");
+                var html= $(msg).children("html");
+                var msg=Message.create({
+                    from:conversation.user,
+                    to:this.App.user,
+                    conversation:conversation,
+                    body:body.text(),
+                    html:html[0],
+                    type:"chat",
+                    date:new Date()
+                })
+                conversation.messages.push(msg)
+                conversation.last_message=msg;
+                conversation.save()
+            }
             this.render()
+        },
+        handleGroupChatMessage:function(msg){
+            var body = $(msg).children("body");
+        },
+        handleSessionMessage:function(msg,conversation){
+            var sessionDescription = $(msg).children("sd");
+            this.App.trigger("sessionDescriptionMessage",sessionDescription,conversation)
         },
         desc:function(a,b){
             if(a.date> b.date){
@@ -450,50 +465,28 @@ jQuery(function($){
             Message.bind('create',this.addOne)
             $(document).on("resize",this.render)
             this.prefetched=false;
-            this.jsp=$(this.el).addScrollExtension()
-            this.contentPane=  this.el.find('.jspPane')
+            //this.jsp=$(this.el).addScrollExtension()
+            //this.contentPane=  this.el.find('.jspPane')
         },
         addOne:function(item){
             if(!this.checkMessage(item))return;
             console.log("adding message item",item)
-            try{
-                if(this.contentPane.length>0){
-                    // console.log("jsp",this.jsp)
-                    contentPane=this.jsp.getContentPane()
-                    this.itemsEl=contentPane.find('ul.items')
-                    var itemEl=ChatMessageItemController.init({
-                        item:item,
-                        ul:this.itemsEl
-                    });
-                    var el=itemEl.render().el
-                    this.itemsEl.append(el);
-                    this.jsp.reinitialise()
-                    this.jsp.addHoverFunc();
-                    this.jsp.scrollToBottom(true)
-                    return
-                }else{
-                    var itemEl=ChatMessageItemController.init({
-                        item:item,
-                        ul:this.itemsEl
-                    });
-                    this.itemsEl.append(itemEl.render().el);
-                    return
-                }
-            }catch(e){
-                console.log(e)
-            }
-
+            if(!this.checkMessage(item))return;
+            this.scroll(function(){
+                var itemEl=ChatMessageItemController.init({
+                    item:item,
+                    ul:this.itemsEl
+                });
+                this.itemsEl.append(itemEl.render().el);
+            });
         },
         show:function(){
             console.log("showChatMessages")
             this.render()
         },
         updateUI:function(){
-            if(this.jsp){
-                this.jsp.reinitialise()
-                this.jsp.addHoverFunc();
-                console.log("updated chatMessageUI")
-            }
+            console.log("update chatui")
+            this.scrollToBottom();
         },
         template:function(){
         },
@@ -587,6 +580,25 @@ jQuery(function($){
             message=Message.find(this.currentAnchor.attr("id"))
             this.App.trigger(action,message,this.current)
             return false;
+        } ,
+        isScrolledToBottom: function(){
+            var scrollBottom  =this.el[0].scrollHeight -
+                this.el.scrollTop() -
+                this.el.outerHeight();
+            return scrollBottom == 0;
+        },
+
+        scrollToBottom: function(){
+            this.el.scrollTop(
+                this.el[0].scrollHeight
+            );
+        },
+        scroll: function(callback){
+            var shouldScroll = this.isScrolledToBottom();
+            console.log("shouldScroll",shouldScroll)
+            if(callback)callback.apply(this);
+            if (shouldScroll)
+                this.scrollToBottom();
         }
     })
 })
@@ -619,6 +631,224 @@ jQuery(function($){
         }
     })
 })
+
+jQuery(function($){
+    window.ChatVideoController = Spine.Controller.create({
+        elements:{
+            '.call':"callBtn",
+            '.local':"localWrap",
+            '.localVideo':"localVideo",
+            ".remote":"remoteWrap",
+            '.remote video':"remoteVideoEl",
+            '.remote .mini':"miniWrap",
+            '.remote .mini video':"miniVideo",
+            '.video-call-view':'videoCallView'
+        },
+        events:{
+            'click .call':"startVideoCall"
+        },
+        proxied:["render","onUserMediaSuccess","onMessage","setLocalAndSendMessage","onUserMediaError","onIceCandidate","onRemoteStreamAdded","onRemoteStreamRemoved"],
+        template:function(data){
+            data.isCurrentUser=(this.App.isCurrentUser(data.from))?true:false
+            console.log("render",data)
+            return $("#chat-message-tmpl").tmpl(data)
+        },
+        init: function(){
+          this.sdpConstraints = {'mandatory': {
+                'OfferToReceiveAudio':true,
+                'OfferToReceiveVideo':true }};
+          this.isVideoMuted = false;
+          this.isAudioMuted = false;
+          this.initiator=false;
+          this.started = false;
+          this.App.bind("sessionDescriptionMessage",this.onMessage);
+        },
+        startVideoCall:function(ev){
+            this.initiator=true
+            this.setStatus("Initializing...");
+            var localSession=this.App.localVideoSession
+            if(localSession){
+                this.publishVideoSession();
+            }else{
+                this.initLocalVideoSession();
+            }
+        },
+        activate:function(){
+            console.log("activate conversation for ",this.conversation)
+            this.el.addClass('active')
+            var remoteSession=VideoSession.findByAttribute("user_id",this.conversation.user_id)
+            if(remoteSession){
+
+            }else{
+                this.invite();
+            }
+        },
+        publishVideoSession:function(){
+
+        },
+        initLocalVideoSession:function(){
+            this.doGetUserMedia();
+        },
+        invite:function(){
+          var invite=$("#video-invite-tmpl").tmpl(this.conversation)
+          this.call=invite.find('.call')
+          this.videoCallView.html(invite)
+        },
+        showRemoteView:function(session){
+
+        },
+        showLocalView:function(session){
+
+        },
+        deActivate:function(){
+            this.el.removeClass('active')
+        },
+        doGetUserMedia:function() {
+        // Call into getUserMedia via the polyfill (adapter.js).
+         var   constraints = { 'optional': [], 'mandatory': {} }
+         try {
+            getUserMedia({'audio':true, 'video':constraints}, this.onUserMediaSuccess,
+            this.onUserMediaError);
+            console.log("Requested access to local media with mediaConstraints:\n" +
+            "  \"" + JSON.stringify(constraints) + "\"");
+         } catch (e) {
+            alert("getUserMedia() failed. Is this a WebRTC capable browser?");
+            console.log("getUserMedia failed with exception: " + e.message);
+         }
+       } ,
+        onUserMediaSuccess:function(stream){
+            console.log("User has granted access to local media.",this.localVideo[0]);
+            // Call the polyfill wrapper to attach the media stream to this element.
+            attachMediaStream(this.localVideo[0], stream);
+            this.localVideo.css("opacity","1")
+            this.localStream = stream;
+            // Caller creates PeerConnection.
+            if (this.initiator) this.mayBeStart();
+        },
+        onUserMediaError:function(){
+            this.reset();
+        },
+        mayBeStart:function(){
+            if (!this.started && this.localStream) {
+                this.setStatus("Connecting...");
+                console.log("Creating PeerConnection.");
+                this.createPeerConnection();
+                console.log("Adding local stream.");
+                this.pc.addStream(this.localStream);
+                this.started = true;
+                // Caller initiates offer to peer.
+                if (this.initiator)
+                    this.doCall();
+            }
+        },
+        setStatus:function(status){
+          this.call.data('loading-text',status)
+            this.call.button("loading")
+        },
+        doCall:function(){
+            var constraints = { 'mandatory': {'MozDontOfferDataChannel':true}, 'optional': [] }
+        // temporary measure to remove Moz* constraints in Chrome
+        if (webrtcDetectedBrowser === "chrome") {
+            for (prop in constraints.mandatory) {
+                if (prop.indexOf("Moz") != -1) {
+                    delete constraints.mandatory[prop];
+                }
+            }
+        }
+        constraints = this.mergeConstraints(constraints, this.sdpConstraints);
+        console.log("Sending offer to peer, with constraints: \n" +
+            "  \"" + JSON.stringify(constraints) + "\".")
+        this.pc.createOffer(this.setLocalAndSendMessage, null, constraints);
+        },
+        createPeerConnection:function(){
+          var pc_config = {'iceServers':[{"url":'stun:' + 'stun.l.google.com:19302'}]};
+          var pc_constraints = { 'optional': [{'DtlsSrtpKeyAgreement': true}] };
+            // Force the use of a number IP STUN server for Firefox.
+          if (webrtcDetectedBrowser == "firefox") {
+              pc_config = {"iceServers":[{"url":"stun:23.21.150.121"}]};
+          }
+          try {
+              console.log("Creating RTCPeerConnnection with:\n" +
+                  "  config: \"" + JSON.stringify(pc_config) + "\";\n" +
+                  "  constraints: \"" + JSON.stringify(pc_constraints) + "\".");
+                // Create an RTCPeerConnection via the polyfill (adapter.js).
+                this.pc = new RTCPeerConnection(pc_config, pc_constraints);
+                this.pc.onicecandidate = this.onIceCandidate;
+                this.pc.onaddstream = this.onRemoteStreamAdded;
+                this.pc.onremovestream = this.onRemoteStreamRemoved;
+              } catch (e) {
+                console.log("Failed to create PeerConnection, exception: " + e.message);
+                alert("Cannot create RTCPeerConnection object; WebRTC is not supported by this browser.");
+                return;
+              }
+            return this.pc;
+         },
+        onRemoteStreamAdded:function(){
+
+        },
+        onRemoteStreamRemoved:function(){
+
+        },
+        onIceCandidate:function(){
+
+        },
+        setLocalAndSendMessage:function(sessionDescription){
+            // Set Opus as the preferred codec in SDP if Opus is present.
+           // sessionDescription.sdp = preferOpus(sessionDescription.sdp);
+            this.pc.setLocalDescription(sessionDescription);
+            console.log("sessionDescriptions",sessionDescription)
+            this.sendMessage(sessionDescription);
+        },
+        sendMessage:function(message){
+            var msgString = JSON.stringify(message);
+            this.App.connection.send( $msg({
+                to: this.App.BRANCH_JID + '/' + this.conversation.user.user_id,type: "chat"})
+                .c("sd", {xmlns: "",format:"json"}).t(msgString))
+        },
+        onMessage:function(sessionDescription,conversation){
+            if(this.conversation.user_id===conversation.user_id){
+                this.processSignalingMessage($(sessionDescription).text())
+            }
+            return true;
+        },
+        processSignalingMessage:function(message){
+            var msg = JSON.parse(message);
+            console.log("received:",msg)
+            if (msg.type === 'offer') {
+                // Callee creates PeerConnection
+                if (!this.initiator && !this.started)
+                this.maybeStart();
+                this.pc.setRemoteDescription(new RTCSessionDescription(msg));
+                //doAnswer();
+            } else if (msg.type === 'answer' && started) {
+                //this.pc.setRemoteDescription(new RTCSessionDescription(msg));
+            } else if (msg.type === 'candidate' && this.started) {
+                var candidate = new RTCIceCandidate({sdpMLineIndex:msg.label,
+                    candidate:msg.candidate});
+               // this.pc.addIceCandidate(candidate);
+            } else if (msg.type === 'bye' && this.started) {
+                //onRemoteHangup();
+            }
+        },
+        mergeConstraints:function(cons1, cons2){
+            var merged = cons1;
+            for (var name in cons2.mandatory) {
+                merged.mandatory[name] = cons2.mandatory[name];
+            }
+            merged.optional.concat(cons2.optional);
+            return merged;
+        },
+        reset:function(){
+            if (this.initiator)
+            this.call.button("reset");
+            this.isVideoMuted = false;
+            this.isAudioMuted = false;
+            this.initiator=false;
+            this.started = false;
+        }
+    })
+})
+
 jQuery(function($){
     window.ConversationController = Spine.Controller.create({
         elements:{
@@ -641,19 +871,7 @@ jQuery(function($){
         init: function(){
             this.updateUI()
             this.chatMessages = ChatMessages.init({el:this.chatMessageView,conversation:this.conversation})
-        },
-        render: function(item){
-            if (item) this.item = item;
-            var elements = this.template(this.item);
-            this.el.replaceWith(elements);
-            this.el = elements;
-            this.header=this.el.find('.header') ;
-            this.content=this.el.find('.content') ;
-            this.footer=this.el.find('.footer') ;
-            this.chatMessageView=this.content.find('.chat-message-view')
-            this.chatVideoView=this.content.find('.chat-video-view')
-            this.chatMessages = ChatMessages.init({el:this.chatMessageView})
-            return this;
+            this.videoController=ChatVideoController.init({el:this.chatVideoView,conversation:this.conversation})
         },
         activate:function(){
             console.log("activating...",this.conversation)
@@ -733,10 +951,10 @@ jQuery(function($){
             //this.itemsEl.find('li.item .actions li.active').removeClass('active')
             if(target.hasClass('active')){
                 target.removeClass('active')
-                this.chatVideoView.removeClass('active')
+                this.videoController.deActivate()
             }else{
                 target.addClass('active')
-                this.chatVideoView.addClass('active')
+                this.videoController.activate()
             }
             this.updateContentPane()
         }
@@ -914,8 +1132,8 @@ jQuery(function($){
                     user:user,
                     messages:[],
                     last_shown_time:new Date(),
-                    initiated_by_local_user:initiated_by_local_user,
-                    current_state:Conversation.CONVERSATION_STATE.CONVERSATION
+                    initiated_by_local_user:initiated_by_local_user
+                    //current_state:Conversation.CONVERSATION_STATE.CONVERSATION
                 }
             )
            // this.conversations[user.user_id]=conversation

@@ -109,6 +109,7 @@ var Chat=Spine.Model.setup("Chat",[
     "last_shown_time",
     "contact"
 ])
+
 var Conversation=Spine.Model.setup("Conversation",[
     "id",
     "user",
@@ -119,12 +120,20 @@ var Conversation=Spine.Model.setup("Conversation",[
     "current_state",
     "initiated_by_local_user"
 ])
-Conversation.extend({
-    CONVERSATION_STATE:{
-        "REQUEST":100,
+
+var VideoSession=Spine.Model.setup("VideoSession",[
+    "id",
+    "initiated_by_local_user",
+    "user_id",
+    "state"
+])
+
+VideoSession.extend({
+    STATE:{
+        "UNINITIALIZED":100,
         "WAITING":200,
         "ANSWER":300,
-        "CONVERSATION":400
+        "INITIALIZED":400
     }
 })
 var Message=Spine.Model.setup("Message",[
