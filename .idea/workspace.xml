@@ -44,28 +44,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="development.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="2" selection-start="1900" selection-end="1952" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="production.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="115" selection-start="2371" selection-end="2371" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Gemfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="16" selection-start="1464" selection-end="1464" vertical-scroll-proportion="0.0">
+            <state line="68" column="13" selection-start="2530" selection-end="2530" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -74,34 +56,25 @@
       <file leaf-file-name="nginx.conf" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/nginx.conf">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="112" selection-start="364" selection-end="364" vertical-scroll-proportion="0.0">
+            <state line="17" column="120" selection-start="429" selection-end="429" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="unicorn_init.sh" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config/unicorn_init.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="111" selection-start="702" selection-end="702" vertical-scroll-proportion="0.6063269">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="unicorn.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/unicorn.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="28" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="deploy.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="deploy.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/deploy.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="12" selection-start="513" selection-end="513" vertical-scroll-proportion="0.0">
+            <state line="61" column="4" selection-start="2208" selection-end="2208" vertical-scroll-proportion="0.84771574">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../poploda/Gemfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="0" selection-start="685" selection-end="744" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -126,8 +99,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/assets/javascripts/controller/branches.js" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/model/chats.js" />
         <option value="$PROJECT_DIR$/app/views/branches/_chat.html.erb" />
         <option value="$PROJECT_DIR$/../webrtc/apprtc/trunk/apprtc/index.html" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/controller/chats.js" />
@@ -137,11 +108,13 @@
         <option value="$PROJECT_DIR$/config/environments/production.rb" />
         <option value="$PROJECT_DIR$/Capfile" />
         <option value="$PROJECT_DIR$/../poploda/config/deploy.rb" />
-        <option value="$PROJECT_DIR$/config/deploy.rb" />
-        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/unicorn.rb" />
         <option value="$PROJECT_DIR$/unicorn_init.sh" />
         <option value="$PROJECT_DIR$/nginx.conf" />
+        <option value="$PROJECT_DIR$/../poploda/Gemfile" />
+        <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/config/environments/production.example.rb" />
+        <option value="$PROJECT_DIR$/config/deploy.rb" />
       </list>
     </option>
   </component>
@@ -208,6 +181,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gutrees" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gutrees" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="environments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="RailsProjectView" />
@@ -228,11 +219,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/config" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/app/assets/images" />
       <recent name="$PROJECT_DIR$/vendor/assets/javascripts/webrtc" />
       <recent name="$PROJECT_DIR$/vendor/assets/javascripts" />
-      <recent name="$PROJECT_DIR$/app/assets/stylesheets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/config" />
@@ -578,20 +569,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/assets/javascripts/webrtc/TB.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/app.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5341" column="8" selection-start="126938" selection-end="126938" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/branches/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="29" selection-start="1164" selection-end="1164" vertical-scroll-proportion="0.0">
@@ -602,27 +579,6 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="20" selection-start="450" selection-end="450" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/application.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="2" selection-start="1900" selection-end="1952" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="115" selection-start="2371" selection-end="2371" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -648,44 +604,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/deploy.rb">
+    <entry file="file://$PROJECT_DIR$/config/unicorn_init.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="12" selection-start="513" selection-end="513" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="16" selection-start="1464" selection-end="1464" vertical-scroll-proportion="0.0">
+        <state line="27" column="111" selection-start="763" selection-end="763" vertical-scroll-proportion="0.71177506">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/unicorn.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="28" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../poploda/config/environments/production.example.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="25" selection-start="1274" selection-end="1274" vertical-scroll-proportion="-0.21223022">
+        <state line="6" column="28" selection-start="208" selection-end="208" vertical-scroll-proportion="0.15817223">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/nginx.conf">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="112" selection-start="364" selection-end="364" vertical-scroll-proportion="0.0">
+        <state line="17" column="120" selection-start="429" selection-end="429" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/unicorn_init.sh">
+    <entry file="file://$PROJECT_DIR$/../poploda/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="111" selection-start="702" selection-end="702" vertical-scroll-proportion="0.6063269">
+        <state line="30" column="0" selection-start="685" selection-end="744" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="46" selection-start="1524" selection-end="1524" vertical-scroll-proportion="1.8717047">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/environments/production.example.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="39" selection-start="2689" selection-end="2689" vertical-scroll-proportion="1.8884892">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../poploda/config/environments/production.example.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="0" selection-start="2476" selection-end="3239" vertical-scroll-proportion="1.7805755">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="13" selection-start="2530" selection-end="2530" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="2" selection-start="1900" selection-end="1952" vertical-scroll-proportion="0.7891037">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/application.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/deploy.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="4" selection-start="2208" selection-end="2208" vertical-scroll-proportion="0.84771574">
           <folding />
         </state>
       </provider>
