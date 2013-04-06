@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.9'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -28,7 +28,7 @@ platform :jruby do
 end
 
 platform :ruby do
-  gem 'mysql2'
+  gem 'pg'
   gem "typhoeus", "~> 0.5.3"
   gem 'yajl-ruby', :require => 'yajl'
 
@@ -53,6 +53,7 @@ gem 'hpricot'
 gem 'valid_email'
 gem 'validate_url'
 gem 'will_paginate'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -60,10 +61,10 @@ gem 'will_paginate'
 gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+ gem 'unicorn'
 
 # Deploy with Capistrano
-#gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'
