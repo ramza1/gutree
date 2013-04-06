@@ -41,7 +41,6 @@
 $(document).ready(
     new function() {
 
-$(".post_input textarea").elastic()
         $(".popover_trigger").popover({trigger:"hover"}) ;
         $("#privacy .ui-btn").popover({trigger:"hover"}) ;
         /**
