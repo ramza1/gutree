@@ -35,10 +35,9 @@
 //= require jQuery.tree
 //= require jquery.tokeninput
 //= require jquery.wookmark.min
-//= require jquery.elastic.source
 //= require chosen-jquery
 //= require_self
-<!-- Once the page is loaded, initalize the plug-in. -->
+
 $(document).ready(
     new function() {
 

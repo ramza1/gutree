@@ -1,11 +1,9 @@
-set :whenever_command, "bundle exec whenever"
 require "bundler/capistrano"
-require "whenever/capistrano"
 
 server "198.199.71.101", :web, :app, :db, primary: true
 
 set :application, "gutrees"
-set :user, "gutrees"
+set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
@@ -15,6 +13,8 @@ set :repository, "ssh://sls@slsapp.com:1234/gutrees/#{application}.git"
 set :scm_username, "evenmatrix@gmail.com"
 set :branch, "master"
 set :git_enable_submodules, 1
+
+set :default_environment, { 'PATH' => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH" }
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
@@ -59,4 +59,5 @@ namespace :deploy do
     end
   end
   before "deploy", "deploy:check_revision"
+
 end

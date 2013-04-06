@@ -13,5 +13,6 @@ production:
   encoding: unicode
   database: gutrees_production
   pool: 5
-  username:admin
-  password:dinner
+  username: admin
+  password: dinner
+  host: localhost
