@@ -19,7 +19,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :last_sign_in_ip
       t.string  :first_name
       t.string  :last_name
-      t.integer :current_state,:default=>0
+      t.string :state
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at

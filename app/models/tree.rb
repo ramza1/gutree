@@ -1,10 +1,6 @@
 class Tree < ActiveRecord::Base
-  UNINITIALIZED = 0
-  INITIALIZING = 1
-  INITIALIZED = 2
-  attr_accessible :name,:about,:established,:tag_list
+  attr_accessible :about,:established,:tag_list
   validates :domain,:presence => true
-  validates :name, :presence => true , :if=>:initialized?
 
   has_many :affiliations,:dependent => :destroy ,:as=>:entity
   has_many :users, :through => :affiliations, :order => 'name'
@@ -24,6 +20,23 @@ class Tree < ActiveRecord::Base
 
   has_many :taggings , :as=>:taggable
   has_many :tags, :through=>:taggings
+
+  state_machine initial: :uninitialized   do
+
+    event :initialized do
+      transition :initializing => :initialized
+    end
+
+    event :initializing do
+      transition :uninitialized => :initializing
+      transition :initialized => :initializing
+    end
+
+    event :uninitialized do
+      transition :initializing => :uninitialized
+      transition :initialized => :uninitialized
+    end
+  end
 
   def admin?(user, exclude_global_admins=false)
     Affiliation::Administration.new
@@ -55,16 +68,15 @@ class Tree < ActiveRecord::Base
       domain.split("@").last
   end
 
-
   def initializing?
-    self.current_state == INITIALIZING
+    self.state == "initializing"
   end
+
   def initialized?
-    self.current_state == INITIALIZED
+    self.state == "initialized"
   end
 
   def update_state_initializing
-    self.current_state = INITIALIZING
-    self.save
+    self.initializing
   end
 end

@@ -69,10 +69,12 @@ class BranchesController < ApplicationController
     @branch = Branch.find(params[:id])
     @tree=@branch.tree
     @page=(params[:page]||1).to_i
-    @per_page = (params[:per_page] ||1).to_i
+    @per_page = (params[:per_page] ||4).to_i
     @per_page=@per_page<100?@per_page:100
     @count=@branch.tips.count
     @tips= @branch.tips.includes([:comments]).page(@page).per_page(@per_page).order("created_at desc")
+    @odd_tips=@tips.odd_values
+    @even_tips=@tips.even_values
     @data={}
     @data[:count]=@count
     @data[:params]={:page=>@page+1 , :per_page=>@per_page}
@@ -111,7 +113,6 @@ class BranchesController < ApplicationController
     if @tree
       @branch = Branch.new()
       @branch.private=params[:branch][:private]
-      @branch.parent_id = params[:branch][:parent_id]
       @branch.name=params[:branch][:name]
       @branch.tree=@tree
       @latest_tip=@branch.tips.latest.first
@@ -142,9 +143,9 @@ class BranchesController < ApplicationController
   def update
     @tree=Tree.find(params[:tree_id])
     @branch = Branch.find(params[:id])
-    @branch.current_state=Tree::INITIALIZED
     respond_to do |format|
       if @branch.update_attributes(params[:branch])
+        @branch.initialized
         format.html { redirect_to tree_branch_url @tree,@branch, notice: 'Branch was successfully updated.' }
         format.json { head :no_content }
         format.js
@@ -171,8 +172,9 @@ class BranchesController < ApplicationController
   def change_photo
     @branch = Branch.find(params[:id])
     logger.info "successful upload..."
+    @branch.photo= params["photo"]
     respond_to do |format|
-      if @branch.update_attribute("photo_tips",params["photo_tips"])
+      if @branch.save
         format.html { redirect_to user_root_url, notice: 'Branch updated.' }
         format.json { render json: { :photo_url => @branch.photo.url(:thumb)}.to_json }
       else
@@ -186,19 +188,10 @@ class BranchesController < ApplicationController
     #remember to auth
     @tree=Tree.find(params[:tree_id])
     if @tree
-      if params[:parent_id].present?
-        parent=Branch.find(params[:parent_id])
-        if !parent.children.exists?(:name =>params[:q]) && parent.name!=params[:q]
-          render :json =>{:available=>true}.to_json, :status => 200
-        else
-          render :json =>{:available=>false}.to_json, :status => 200
-        end
+      if !@tree.branches.where("name = :name",:name => params[:q]).exists?
+        render :json =>{:available=>true}.to_json, :status => 200
       else
-        if !@tree.branches.where("name = :name",:name => params[:q]).exists?
-          render :json =>{:available=>true}.to_json, :status => 200
-        else
-          render :json =>{:available=>false}.to_json, :status => 200
-        end
+        render :json =>{:available=>false}.to_json, :status => 200
       end
     else
       render :json => {:error=>"not found"},:status => 404
@@ -207,9 +200,19 @@ class BranchesController < ApplicationController
 
   def check_state
     @branch=Branch.find(params[:id])
-    logger.info"current_state #{@branch.current_state}"
+    logger.info"current_state #{@branch.state}"
     if @branch.initializing?
       redirect_to edit_tree_branch_url(@branch.tree,@branch)
     end
+  end
+end
+
+class Array
+  def odd_values
+    (0...length / 2).collect { |i| self[i*2 + 1] }
+  end
+
+  def even_values
+    (0...(length + 1) / 2).collect { |i| self[i*2] }
   end
 end

@@ -3,12 +3,13 @@ jQuery(function($){
         elements:{
             ".items":"itemsEl",
             ".items .item":'handler',
+            ".grid-item":"gridHandler",
             ".progress":"progress",
             ".load":"load"
         },
         events:{
         },
-        proxied:["render","addOne","show","addAll","prefetchComplete","onError","refresh","scroll"],
+        proxied:["render","addOne","show","addAll","prefetchComplete","onError","refresh","scroll","initGrid","update"],
         init: function(){
             this.items=[];
             this.params=this.params||{}
@@ -19,6 +20,33 @@ jQuery(function($){
             $(document).on("scroll",this.scroll)
             $("#tips").on("tips:refresh",this.refresh)
             $("#tips").on("tips:addOne",this.addOne)
+            /**
+            this.gridOptions = {
+                autoResize: true, // This will auto-update the layout when the browser window is resized.
+                container: $('#tipView'), // Optional, used for some extra CSS styling
+                offset:0, // Optional, the distance between grid items
+                itemWidth:this.el.width()/2, // Optional, the width of a grid item
+                animate:true
+            };
+            this.gridHandler.imagesLoaded(this.initGrid);
+            $('#tips').on("tips:create",this.proxy(function(ev,item){
+                console.log('create',ev)
+            this.addOne(item)}))
+            this.App.bind("tips:update",this.update)
+             **/
+        },
+        initGrid:function(){
+            this.gridHandler = this.el.find(".grid-item");
+            this.gridHandler.wookmark(this.gridOptions);
+
+        },
+        clearGrid:function(){
+            this.gridHandler.wookmarkClear();
+        },
+        update:function(){
+            this.clearGrid();
+            this.initGrid();
+            console.log('refresh')
         },
         addOne:function(item){
             console.log('item',item.data('collection_url'))

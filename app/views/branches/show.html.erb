@@ -29,138 +29,147 @@
     </div></div>
 <section id="main" class="center_panel">
   <div class="container-fluid">
+  <div class="banner">
+    <img src="/assets/banner1.jpg"/>
+  </div>
   <div class="breadcrumb-container">
     <ul class="breadcrumb">
       <%= breadcrumb(@branch) %>
     </ul>
   </div>
-  <div class="banner">
-    <img src="/assets/banner1.jpg"/>
-  </div>
   <div class="row-fluid">
-  <div class="span8 posts">
-    <div id="upost">
-      <a class="avatar lt">
-        <img src="/assets/image_8.jpg" class="avatar_shadow light-rounded" width="50px" height="50px"/>
-      </a>
-         <div class="upost-container left_arrow">
-           <div class="upost-container-inner">
-             <div id="tip-input">
-               <a class="input-btn open" data-url="<%= tips_url(:format=>"json") %>" data-branch="<%= @branch.id%>">
-                 <span class="help-inline status">click to open</span>
-               </a>
-               <div class="input-wrap"></div>
-             </div>
-             <div id="input-controls"  class="btn-group">
-               <button class="btn disabled attachment dropdown-toggle" data-toggle="dropdown">
-                 <i class="icon-paper-clip"></i>
-               </button>
-               <ul class="dropdown-menu">
-                 <li>
-                   <a data-target="#tip-photo" class="photoOp" data-action="show:tip:photo" data-type="photo">
-                     <div class="ui-btn-inner">
-                     <i class="icon-picture"></i>
-                     <span class="ui-text"> Photo</span>
-                     </div>
-                   </a>
-                 </li>
-                 <li>
-                   <a data-target="#tip-link" class="linkOp" data-action="show:tip:link" data-type="link">
-                     <div class="ui-btn-inner">
-                     <i class="icon-link"></i>
-                     <span class="ui-text"> Link</span>
-                     </div>
-                   </a>
-                 </li>
-               </ul>
-             </div>
-           </div>
-           <div class="tip-main-container">
-            <div class="wrap_lv1">
-             <div class="inner ">
-               <div class="tab-body">
-                 <div id="tip-photo" class="tab-pane">
-                   <span class="tip-icon "><i class="icon-picture"></i></span>
-                   <button class="tip-icon close delete " rel="tooltip" title="hide"><i class="icon-caret-up"></i></button>
-                   <div class="content">
-                    <a id="tip-photo-upload-btn"class="upload_btn" rel="popover" data-placement="top" data-content="Only invited members can join, view and share tips" data-original-title="Private branches ">
+  <div id="tipView" class="posts">
+    <div id="tips" class="tips" data-page="<%=@data[:params][:page]%>" data-per_page="<%= @data[:params][:per_page]%>" data-remaining="<%=@data[:remaining]%>" data-empty="<%=@data[:empty]%>" data-collection_url=<%= tips_tree_branch_url(@tree,@branch,:format=>"js")%>>
+      <div class="ltr  span6">
+        <div class="grid-item">
+          <div class="grid-item-inner">
+            <div id="upost">
+              <a class="avatar lt">
+                <img src="/assets/image_8.jpg" class="avatar_shadow light-rounded" width="50px" height="50px"/>
+              </a>
+              <div class="upost-container left_arrow">
+                <div class="upost-container-inner">
+                  <div id="tip-input">
+                    <a class="input-btn open" data-url="<%= tips_url(:format=>"json") %>" data-branch="<%= @branch.id%>">
+                      <span class="help-inline status">click to open</span>
+                    </a>
+                    <div class="input-wrap"></div>
+                  </div>
+                  <div id="input-controls"  class="btn-group">
+                    <button class="btn disabled attachment dropdown-toggle" data-toggle="dropdown">
+                      <i class="icon-paper-clip"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a data-target="#tip-photo" class="photoOp" data-action="show:tip:photo" data-type="photo">
+                          <div class="ui-btn-inner">
+                            <i class="icon-picture"></i>
+                            <span class="ui-text"> Photo</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-target="#tip-link" class="linkOp" data-action="show:tip:link" data-type="link">
+                          <div class="ui-btn-inner">
+                            <i class="icon-link"></i>
+                            <span class="ui-text"> Link</span>
+                          </div>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="tip-main-container">
+                  <div class="wrap_lv1">
+                    <div class="inner ">
+                      <div class="tab-body">
+                        <div id="tip-photo" class="tab-pane">
+                          <span class="tip-icon "><i class="icon-picture"></i></span>
+                          <button class="tip-icon close delete " rel="tooltip" title="hide"><i class="icon-caret-up"></i></button>
+                          <div class="content">
+                            <a id="tip-photo-upload-btn"class="upload_btn" rel="popover" data-placement="top" data-content="Only invited members can join, view and share tips" data-original-title="Private branches ">
               <span class="ui-btn-inner">
               <span class="ui-icon"><i class="icon-upload-alt"></i></span>
                 <span class="ui-text">Click to add photo or drag photo here</span>
               </span>
-                   </a>
-                    <div id="post-upload-preview-wrap" class="hide">
-                      <div class="preview-container">
-                        <div class="image_wrap">
-                           <img src="/assets/image_5.jpg"/>
-                        </div>
-                        <div class="btns update-btns">
-                          <div class="ui-grid-a">
-                            <div class="ui-block">
-                              <button class="btn btn-block change">change</button>
+                            </a>
+                            <div id="post-upload-preview-wrap" class="hide">
+                              <div class="preview-container">
+                                <div class="image_wrap">
+                                  <img src="/assets/image_5.jpg"/>
+                                </div>
+                                <div class="btns update-btns">
+                                  <div class="ui-grid-a">
+                                    <div class="ui-block">
+                                      <button class="btn btn-block change">change</button>
+                                    </div>
+                                    <div class="ui-block">
+                                      <button data-loading-text="deleting..."  class="btn btn-danger btn-block delete_tip">delete</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                            <div class="ui-block">
-                              <button data-loading-text="deleting..."  class="btn btn-danger btn-block delete_tip">delete</button>
+                            <div class="photo-upload-progress hide" class="hide">
+                              <span class="help-inline"><span class="status"></span></span>
+                              <div class="progress progress-success progress-striped active">
+                                <div class="bar" ></div>
+                              </div>
                             </div>
                           </div>
+                          <div class="tip-alert hide"></div>
+                        </div>
+                        <div id="tip-link" class="tab-pane" >
+                          <button class="tip-icon close remove " rel="tooltip" title="hide"><i class="icon-caret-up"></i></button>
+                          <div class="content">
+                            <h6 class="light_header"><i class="icon-link"></i> link</h6>
+                            <div class="tip-link-input control-group">
+                              <div class="link_wrap">
+                                <input type="url" class="input"  placeholder="enter a valid url and save"/>
+                              </div>
+                              <div class="btns">
+                                <button class="btn save" data-loading-text="saving...">save</button>
+                              </div>
+                            </div>
+                            <div class="tip-link-preview hide">
+                              <div class="linkEl"></div>
+                              <div class="update-btns">
+                                <button class="btn change">change</button>
+                                <button data-loading-text="deleting..."  class="btn btn-danger delete">delete</button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="tip-alert hide"></div>
                         </div>
                       </div>
-                    </div>
-                    <div class="photo-upload-progress hide" class="hide">
-                     <span class="help-inline"><span class="status"></span></span>
-                     <div class="progress progress-success progress-striped active">
-                       <div class="bar" ></div>
-                     </div>
-                       </div>
-                   </div>
-                   <div class="tip-alert hide"></div>
-                 </div>
-                 <div id="tip-link" class="tab-pane" >
-                   <button class="tip-icon close remove " rel="tooltip" title="hide"><i class="icon-caret-up"></i></button>
-                   <div class="content">
-                     <h6 class="light_header"><i class="icon-link"></i> link</h6>
-                     <div class="tip-link-input control-group">
-                     <div class="link_wrap">
-                       <input type="url" class="input"  placeholder="enter a valid url and save"/>
-                     </div>
-                      <div class="btns">
-                        <button class="btn save" data-loading-text="saving...">save</button>
+                      <div id="tip-title"></div>
+                      <div id="tip-categories"></div>
+                      <div id="tip-btn">
+                        <button type="button" data-loading-text="posting..."  class="tip btn btn-primary"><i class="icon-share-alt"></i> share</button>
+                        <a type="button"  class="btn categoryOp link-btn"><i class="icon-tag"></i> Categories</a>
+                        <span class="separator tip-divider-vertical">|</span>
+                        <a type="button"  class="btn titleOp link-btn"><i class="icon-pencil"></i> Title</a>
+                        <button type="button" class="close close-tip" data-dismiss="alert">×</button>
                       </div>
-                     </div>
-                     <div class="tip-link-preview hide">
-                       <div class="linkEl"></div>
-                       <div class="update-btns">
-                         <button class="btn change">change</button>
-                         <button data-loading-text="deleting..."  class="btn btn-danger delete">delete</button>
-                       </div>
-                     </div>
-                   </div>
-                   <div class="tip-alert hide"></div>
-                 </div>
-               </div>
-               <div id="tip-title"></div>
-               <div id="tip-categories"></div>
-               <div id="tip-btn">
-                 <button type="button" data-loading-text="posting..."  class="tip btn btn-primary"><i class="icon-share-alt"></i> share</button>
-                 <a type="button"  class="btn categoryOp link-btn"><i class="icon-tag"></i> Categories</a>
-                 <span class="separator tip-divider-vertical">|</span>
-                 <a type="button"  class="btn titleOp link-btn"><i class="icon-pencil"></i> Title</a>
-                 <button type="button" class="close close-tip" data-dismiss="alert">×</button>
-               </div>
-             </div>
-           </div>
-         </div>
-         </div>
-    </div>
-    <div id="tipView">
-      <div id="tips" class="tips" data-page="<%=@data[:params][:page]%>" data-per_page="<%= @data[:params][:per_page]%>" data-remaining="<%=@data[:remaining]%>" data-empty="<%=@data[:empty]%>" data-collection_url=<%= tips_tree_branch_url(@tree,@branch,:format=>"js")%>>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="list-container items">
-          <%= render @tips %>
+          <%= render @odd_tips %>
+        </div>
+      </div>
+      <div class="rtl  span6">
+        <div class="list-container items">
+          <%= render @even_tips %>
         </div>
       </div>
     </div>
   </div>
-   <div class="span4 side_bar">
+   <div class="span4 side_bar" style="display:none;">
           <div class="inner">
             <div class=" trees">
               <header class="ui-mini-header letter_pressed">

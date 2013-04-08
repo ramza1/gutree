@@ -1,7 +1,5 @@
 class User < ActiveRecord::Base
-  UNINITIALIZED = 0
-  INITIALIZING = 1
-  INITIALIZED = 2
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable ,:token_authenticatable
 
@@ -23,11 +21,27 @@ class User < ActiveRecord::Base
 
   has_many :sent_messaqes,:foreign_key => "sender_id",:class_name => "Message"
   has_many :received_messaqes,:class_name => "Message",:as=>:polymorphic
-  has_one :user_presences,:dependent=>:destroy
 
   after_create :create_tree
 
   after_create :update_state_initializing
+
+  state_machine initial: :uninitialized   do
+
+    event :initialized do
+      transition :initializing => :initialized
+    end
+
+    event :initializing do
+      transition :uninitialized => :initializing
+      transition :initialized => :initializing
+    end
+
+    event :uninitialized do
+      transition :initializing => :uninitialized
+      transition :initialized => :uninitialized
+    end
+  end
 
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
     data = access_token.info
@@ -102,15 +116,15 @@ class User < ActiveRecord::Base
   end
 
   def initializing?
-    self.current_state == INITIALIZING
+    self.state == "initializing"
   end
+
   def initialized?
-    self.current_state == INITIALIZED
+    self.state == "initialized"
   end
 
   def update_state_initializing
-    self.current_state = INITIALIZING
-    self.save
+    initializing
   end
 
   private

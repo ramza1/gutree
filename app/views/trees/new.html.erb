@@ -56,7 +56,6 @@
               <%= f.error_notification %>
               <div class="form-inputs ">
                 <%= f.input :domain, :wrapper_html => { :class => 'control-group' } ,:disabled => true,:input_html => {:class=>"input_padding_extra uneditable-input"}, :hint => 'You cannot change your domain.' %>
-                <%= f.input :name,:input_html => {:class=>"input_padding_extra"} %>
                 <%= f.input :about,:as=>:text,:input_html => {:rows=>"3",:class=>"input_padding_extra"} %>
                 <%= f.input :tag_list, :label => 'Tags', :label_html => { :data=>{
                         :placement=>"right",

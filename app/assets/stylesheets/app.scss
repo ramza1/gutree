@@ -765,9 +765,9 @@ body{
     position: relative;
   }
   .posts{
-    padding:20px 0 20px 20px;
+    padding: 20px 0;
     .post{
-      .lt{
+      .avatar{
         margin-top: 15px;
         img{
           width:50px;
@@ -776,7 +776,72 @@ body{
       }
     }
     .post_container{
-      margin-left: 70px;
+    }
+    .rtl{
+      .grid-item{
+        margin:0 20px 0 0;
+      }
+      .avatar{
+      float:right;
+    }
+      .post_container{
+        margin-right: 70px;
+        &:before {
+          content: '';
+          display: inline-block;
+          border-left: 10px solid #ccc;
+          border-bottom: 10px solid transparent;
+          border-right: 10px solid transparent;
+          border-top: 10px solid transparent;
+          position: absolute;
+          top: 30px;
+          right: -20px;
+        }
+        &:after {
+          content: '';
+          display: inline-block;
+          border-left: 9px solid #fff;
+          border-bottom: 9px solid transparent;
+          border-top: 9px solid transparent;
+          border-right: 9px solid transparent;
+          position: absolute;
+          top: 31px;
+          right: -18px;
+        }
+      }
+    }
+    .ltr{
+      .grid-item{
+        margin:0 0 0 20px;
+      }
+      .avatar{
+        float: left;
+      }
+      .post_container{
+        margin-left: 70px;
+      &:before {
+        content: '';
+        display: inline-block;
+        border-left: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid #ccc;
+        border-top: 10px solid transparent;
+        position: absolute;
+        top: 30px;
+        left: -20px;
+      }
+      &:after {
+        content: '';
+        display: inline-block;
+        border-left: 9px solid transparent;
+        border-bottom: 9px solid transparent;
+        border-top: 9px solid transparent;
+        border-right: 9px solid #fff;
+        position: absolute;
+        top: 31px;
+        left: -18px;
+      }
+      }
     }
   }
 }
@@ -5355,7 +5420,23 @@ a.photo_preview{
     left: 0;
   }
 }
+.grid-wrap{
+  position: relative;
+}
+/**
+#tipView{
+  position: absolute;
+  width:100%;
+  padding: 0;
+  .grid-item{
+    display:none;
+    width:50%;
+    .grid-item-inner{
+      padding: 20px 20px 0;
+    }
 
+  }
+}  **/
 
 
 

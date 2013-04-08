@@ -7,11 +7,11 @@ class CreateBranches < ActiveRecord::Migration
       t.integer :memberships_count, default: 0
       t.integer :administrations_count, default: 0
       t.boolean :private,default:false
-      t.integer :current_state,:default=>0
-      t.string :ancestry
+      t.string :state
       t.timestamps
     end
-    add_index :branches, :ancestry
+    add_index :branches, :tree_id
     add_index :branches, :name
+    add_index :branches, [:name,:tree_id],:unique=>true
   end
 end

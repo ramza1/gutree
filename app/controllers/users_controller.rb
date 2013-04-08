@@ -22,9 +22,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.current_state=User::INITIALIZED
     respond_to do |format|
       if current_user.update_attributes(params[:user])
+        current_user.initialized
         format.html { redirect_to user_root_url, notice: 'Profile updated.' }
         format.json { head :no_content }
       else

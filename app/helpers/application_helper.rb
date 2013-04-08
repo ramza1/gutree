@@ -60,22 +60,10 @@ module ApplicationHelper
 
       def breadcrumb(branch)
         tree=branch.tree
-        link= link_to tree.name,tree_url(tree)
+        link= link_to tree.domain,tree_url(tree)
         tag=content_tag(:li,{}) do
             link.concat(content_tag(:span, "/",class:"divider"))
         end
-        ancestors=branch.ancestors
-        ancestors.each do|branch|
-          link= link_to branch.name,tree_branch_url(branch)
-          tag1=content_tag(:li,{}) do
-            link.concat(content_tag(:span, "/",class:"divider"))
-          end
-          link= link_to "branches",sub_branches_tree_branch_url(branch)
-          tag2=content_tag(:li,{}) do
-              link.concat(content_tag(:span, "/",class:"divider"))
-              end
-           tag.concat(tag1).concat(tag2)
-          end
         tag.concat(content_tag(:li,branch.name,class:"active"))
       end
 end

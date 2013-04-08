@@ -378,15 +378,34 @@ jQuery(function($){
                     this.toolBar.removeClass("disabled")
                     this.bodyEl.html($("#tip-input-title-tmpl").tmpl())
                     this.input=this.bodyEl.find(".tip-input")
+                    this.input.on("resize",this.proxy(function(){
+                        console.log("resize")
+                        this.App.trigger("tips:update")
+                    }))
                     this.bodyEl.show();
                     //this.browsePhoto.activate();
                     this.postBtnEl.show();
                     this.postBtn.addClass("disabled")
-                    this.mainContainer.slideDown();
+                    this.mainContainer.show();
+                    this.App.trigger("tips:update")
+                    /**
+                    this.mainContainer.slideDown("fast",this.proxy(function(){
+                        this.App.trigger("tips:update")
+                    }));  **/
                 })
             })
         },
         closePost:function(callback){
+            this.mainContainer.hide();
+            this.postCategories.empty();
+            this.tabPane.attr('aria-hidden',true).removeClass('active')
+            this.titleEl.empty();
+            this.bodyEl.empty();
+            this.postTrigger.show();
+            this.toolBar.addClass("disabled")
+            if(callback)callback.call(null)
+            this.App.trigger("tips:update")
+            /**
             this.mainContainer.slideUp("fast",this.proxy(function(){
                 this.postCategories.empty();
                 this.tabPane.attr('aria-hidden',true).removeClass('active')
@@ -395,16 +414,16 @@ jQuery(function($){
                 this.postTrigger.show();
                 this.toolBar.addClass("disabled")
                 if(callback)callback.call(null)
-            }));
+                this.App.trigger("tips:update")
+            })); **/
         },
         toggleCategories:function(ev){
             var el= $(ev.currentTarget)
             if(el.hasClass("disabled") || this.toolBar.hasClass("disabled"))return;
             if(el.hasClass("open")) {
                 el.removeClass("open")
-                this.postCategories.slideUp(function(){
-                   $(this).empty()
-                });
+                this.postCategories.show();
+                $(this).empty();
             } else{
                 el.addClass("open")
                 var tmpl=$("#tip-category-tmpl").tmpl("")
@@ -415,27 +434,28 @@ jQuery(function($){
                         jsonContainer:"tags",
                         hintText:"type a name and press enter or comma."
                     })
-                this.postCategories.hide().slideDown()
+                this.postCategories.hide()
                 this.categories=this.postCategories.find("textarea")
                 //this.categoryEl.find(".ui-text").text("Remove Categories")
             }
+            this.App.trigger("tips:update")
         } ,
         toggleTitle:function(ev){
             var el= $(ev.currentTarget)
             if(el.hasClass("disabled") || this.toolBar.hasClass("disabled"))return;
             if(el.hasClass("open")) {
                 el.removeClass("open")
-                this.titleEl.slideUp(function(){
-                    $(this).empty()
-                });
+                this.titleEl.hide();
+                $(this).empty()
                 this.categoryEl.find(".ui-text").text("Add Categories")
             } else{
                 el.addClass("open")
                 this.titleEl.html($("#tip-title-tmpl").tmpl(""))
-                this.titleEl.hide().slideDown()
+                this.titleEl.hide().show()
                 this.title=this.titleEl.find("input")
                 //this.categoryEl.find(".ui-text").text("Remove Categories")
             }
+            this.App.trigger("tips:update")
         } ,
         checkInput:function(){
             var value = this.input.val();

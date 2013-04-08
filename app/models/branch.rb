@@ -1,28 +1,7 @@
-class BranchNameValidator < ActiveModel::EachValidator
-  def validate_each(record,attr,val)
-    if record.is_root?
-      if record.new_record?
-      record.errors[attr] << "is already taken." unless
-          !record.tree.branches.where("name = :name ",:name => val).exists?
-      else
-        record.errors[attr] << "is already taken." unless
-            !record.tree.branches.where("name = :name AND id != :id ",:name => val,:id=>record.id).exists?
-      end
-    else
-      record.errors[attr] << "is already taken." unless
-          record.parent.name!=record.name && !record.parent.children.exists?(:name =>val)
-    end
-  end
-end
-
 class Branch < ActiveRecord::Base
-  UNINITIALIZED = 0
-  INITIALIZING = 1
-  INITIALIZED = 2
-  attr_accessible :name,:description,:tag_list,:private;
+  attr_accessible :name,:description,:tag_list,:private,:photo;
   validates :name,:presence => true
-  validates :name,:branch_name=>true
-  has_ancestry
+  validates_uniqueness_of :name,:scope =>:tree_id,:message=>"is already taken."
   has_many :membership_requests, :dependent => :destroy ,:conditions => :private
   belongs_to :tree
   has_many :affiliations,:dependent => :destroy
@@ -44,9 +23,27 @@ class Branch < ActiveRecord::Base
   has_attached_file :photo,:styles => {:icon=>"50x50#",:icon_2x=>"100x100#",:thumb => "200x297>", :croppable => '600x600>'},
                     :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
                     :url => "/system/:attachment/:id/:style/:filename"
+
   has_one :caption ,:as => :captionable
 
   after_create :update_state_initializing
+
+  state_machine initial: :uninitialized   do
+
+    event :initialized do
+      transition :initializing => :initialized
+    end
+
+    event :initializing do
+      transition :uninitialized => :initializing
+      transition :initialized => :initializing
+    end
+
+    event :uninitialized do
+      transition :initializing => :uninitialized
+      transition :initialized => :uninitialized
+    end
+  end
 
   def admin?(user, exclude_global_admins=false)
     if user
@@ -87,19 +84,15 @@ class Branch < ActiveRecord::Base
     end
   end
 
-  def root?
-    parent_id.blank?
+  def initializing?
+    self.state == "initializing"
   end
 
-  def initializing?
-    self.current_state == INITIALIZING
-  end
   def initialized?
-    self.current_state == INITIALIZED
+    self.state == "initialized"
   end
 
   def update_state_initializing
-    self.current_state = INITIALIZING
-    self.save
+    self.initializing
   end
 end

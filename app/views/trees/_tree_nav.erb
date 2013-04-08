@@ -1,7 +1,7 @@
 <aside id="branch" class="right_panel">
   <div class="inner branch">
     <div class="polaroid photo">
-      <%= image_tag @tree.photo.url(:thumb), :alt =>@tree.name %>
+      <%= image_tag @tree.photo.url(:thumb), :alt =>@tree.domain %>
 
       <p class="tip meta letter_pressed countable">
         <i class=" icon-group"></i> <span class="badge badge-success">13</span>
@@ -10,8 +10,8 @@
       </p>
     </div>
     <header class="letter_pressed name ">
-      <h5 class="light_header   ui-inline-text " title="<%= @tree.name %>">
-        <%= @tree.name %>
+      <h5 class="light_header   ui-inline-text " title="<%= @tree.domain %>">
+        <%= @tree.domain %>
       </h5>
     </header>
     <ul class="nav nav-list">

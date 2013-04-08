@@ -90,7 +90,7 @@ class TreesController < ApplicationController
     @tree = Tree.find(params[:id])
     logger.info "successful upload..."
     respond_to do |format|
-      if @tree.update_attribute("photo_tips",params["photo_tips"])
+      if @tree.update_attribute("photo",params["photo"])
         format.html { redirect_to user_root_url, notice: 'Profile updated.' }
         format.json { render json: { :photo_url => @tree.photo.url(:thumb)}.to_json }
       else
@@ -103,20 +103,13 @@ class TreesController < ApplicationController
   def tags
     @tree = Tree.find(params[:id])
 
-    respond_to do |format|
-      if @tree.update_attribute("photo_tips",params["photo_tips"])
-        format.json {head :no_content }
-      else
-        format.json {head :no_content}
-      end
-    end
   end
 
   def update
     @tree = Tree.find(params[:id])
-    @tree.current_state=Tree::INITIALIZED
     respond_to do |format|
       if @tree.update_attributes(params[:tree])
+        @tree.initialized
         format.html { redirect_to @tree, notice: 'Tree was successfully updated.' }
         format.json { head :no_content }
       else

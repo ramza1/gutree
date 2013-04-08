@@ -5,7 +5,6 @@ jQuery(function($){
             "#branch_name":"branchName",
             "#branch_private" :"type" ,
             '#new_branch_form':"newBranchForm",
-            '#branch_parent_id':"parentId",
             '#branch_tree_id':'treeId',
             ".create":"createButton" ,
             ".cancel":"cancel" ,
@@ -53,7 +52,6 @@ jQuery(function($){
                     this.createButton.removeClass('disabled')
                     this.showHint("checking availability");
                     data={}
-                    data['parent_id']=this.parentId.val()
                     data['tree_id']=this.treeId.val()
                     data['q']=query
                     $.ajax({
@@ -126,7 +124,6 @@ jQuery(function($){
           this.newBranchForm=this.el.find('#new_branch_form')
           this.nameEl=this.newBranchForm.find("#name_el")
           this.type=this.newBranchForm.find("#branch_private")
-          this.parentId=this.newBranchForm.find("#branch_parent_id")
           this.treeId=this.newBranchForm.find("#branch_tree_id")
           this.createButton=this.newBranchForm.find(".create")
           this.cancel=this.newBranchForm.find(".cancel")

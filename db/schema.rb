@@ -38,21 +38,21 @@ ActiveRecord::Schema.define(:version => 20130224053950) do
     t.integer  "tree_id"
     t.string   "name"
     t.text     "description"
-    t.integer  "memberships_count",       :default => 0
-    t.integer  "administrations_count",   :default => 0
-    t.boolean  "private",                 :default => false
-    t.integer  "current_state",           :default => 0
-    t.string   "ancestry"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
-    t.string   "photo_tips_file_name"
-    t.string   "photo_tips_content_type"
-    t.integer  "photo_tips_file_size"
-    t.datetime "photo_tips_updated_at"
+    t.integer  "memberships_count",     :default => 0
+    t.integer  "administrations_count", :default => 0
+    t.boolean  "private",               :default => false
+    t.string   "state"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
-  add_index "branches", ["ancestry"], :name => "index_branches_on_ancestry"
+  add_index "branches", ["name", "tree_id"], :name => "index_branches_on_name_and_tree_id", :unique => true
   add_index "branches", ["name"], :name => "index_branches_on_name"
+  add_index "branches", ["tree_id"], :name => "index_branches_on_tree_id"
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -80,11 +80,6 @@ ActiveRecord::Schema.define(:version => 20130224053950) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
-
-  create_table "likes", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "links", :force => true do |t|
     t.string   "url"
@@ -177,44 +172,43 @@ ActiveRecord::Schema.define(:version => 20130224053950) do
 
   create_table "trees", :force => true do |t|
     t.string   "domain"
-    t.string   "name"
     t.string   "about"
     t.date     "established"
-    t.integer  "memberships_count",       :default => 0
-    t.integer  "administrations_count",   :default => 0
-    t.integer  "current_state",           :default => 0
-    t.boolean  "private",                 :default => false
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
-    t.string   "photo_tips_file_name"
-    t.string   "photo_tips_content_type"
-    t.integer  "photo_tips_file_size"
-    t.datetime "photo_tips_updated_at"
+    t.integer  "memberships_count",     :default => 0
+    t.integer  "administrations_count", :default => 0
+    t.string   "state"
+    t.boolean  "private",               :default => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "trees", ["domain"], :name => "index_trees_on_domain", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string   "email",                   :default => "", :null => false
-    t.string   "encrypted_password",      :default => "", :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",           :default => 0
+    t.integer  "sign_in_count",          :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "current_state",           :default => 0
+    t.string   "state"
     t.string   "authentication_token"
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
-    t.string   "photo_tips_file_name"
-    t.string   "photo_tips_content_type"
-    t.integer  "photo_tips_file_size"
-    t.datetime "photo_tips_updated_at"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
