@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224053950) do
+ActiveRecord::Schema.define(:version => 20130413233659) do
 
   create_table "admins", :force => true do |t|
     t.boolean  "manage_branches", :default => false
@@ -54,6 +54,23 @@ ActiveRecord::Schema.define(:version => 20130224053950) do
   add_index "branches", ["name"], :name => "index_branches_on_name"
   add_index "branches", ["tree_id"], :name => "index_branches_on_tree_id"
 
+  create_table "calls", :force => true do |t|
+    t.integer  "caller_id"
+    t.integer  "callee_id"
+    t.integer  "branch_id"
+    t.text     "token"
+    t.string   "sid"
+    t.string   "state"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "calls", ["branch_id"], :name => "index_calls_on_branch_id"
+  add_index "calls", ["callee_id"], :name => "index_calls_on_callee_id"
+  add_index "calls", ["caller_id", "callee_id", "branch_id"], :name => "index_calls_on_caller_id_and_callee_id_and_branch_id", :unique => true
+  add_index "calls", ["caller_id"], :name => "index_calls_on_caller_id"
+  add_index "calls", ["sid"], :name => "index_calls_on_sid"
+
   create_table "comments", :force => true do |t|
     t.text     "body"
     t.integer  "user_id"
@@ -64,6 +81,21 @@ ActiveRecord::Schema.define(:version => 20130224053950) do
 
   add_index "comments", ["tip_id"], :name => "index_comments_on_tip_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "contacts", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "branch_id"
+    t.string   "jid"
+    t.string   "presence"
+    t.string   "show"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "affiliation"
+  end
+
+  add_index "contacts", ["branch_id"], :name => "index_contacts_on_branch_id"
+  add_index "contacts", ["jid"], :name => "index_contacts_on_jid"
+  add_index "contacts", ["user_id"], :name => "index_contacts_on_user_id"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0

@@ -2,8 +2,10 @@
     <div id="conversation_all" data-branch-name="<%= @branch.name %>" data-branch-id="<%= @branch.id %>" >
       <div class="tabView">
         <div class="tab-body">
-          <div id="contacts" class="tab-pane"></div>
-          <div id="messages" class="tab-pane">
+          <div id="contacts" class="tab-pane">
+            <ul class="nav items nav-list tree"></ul>
+          </div>
+          <div id="chats" class="tab-pane">
             <ul class="items nav nav-list"></ul>
           </div>
           <div id="chat-settings" class=" tab-pane"></div>
@@ -26,7 +28,7 @@
                   <a href="#contacts" data-action="show:contacts"><i class="icon-user"></i></a>
                 </li>
                 <li>
-                  <a href="#messages" data-action="show:messages"><i class="icon-envelope-alt"></i></a>
+                  <a href="#chats" data-action="show:chats"><i class="icon-envelope-alt"></i></a>
                 </li>
                 <li>
                   <a href="#chat-settings" data-action="show:chat-settings"><i class="icon-cog"></i></a>
@@ -39,8 +41,7 @@
       <div id="conversation_direct">
         <div class="inner">
           <div class="conversation-tab-view">
-            <div class="conversation-tab-body">
-              <div class="conversation-empty-view">
+	          <div class="conversation-empty-view">
 
                 <header class="header">
                   <h5 class="light_header letter_pressed">Start a new conversation</h5>
@@ -55,13 +56,54 @@
                 </div>
                 <p class="hint letter_pressed">click on the add button to start talking </p>
               </div>
+            <div class="conversation-tab-body">
+              <div id="conversation-tab-pane_conference" class="conversation-tab-pane">
+                <div class="header">
+                  <div class="shadow-bottom-wrap">
+                    <div class="shadow-top"></div>
+                  </div>
+                  <div class="inner">
+                    <div class="contact letter_pressed">
+                    <span class="image_wrap">
+                       <%= image_tag @branch.photo.url(:icon), :alt =>@branch.name, :class=>"icon  avatar_shadow little-rounded "%>
+                    </span>
+                      <span class="name ui-inline-text"><%=@branch.name %></span>
+                      <p><span class="online online-status"></span> online</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="content">
+                  <div class="conversation-view " data-conversation-state="conversation">
+                    <div class="chat-message-view">
+                      <ul class="chat-messages items"></ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="footer">
+                  <div class="shadow-top-wrap">
+                    <div class="shadow-bottom"></div>
+                  </div>
+                  <div class="inner">
+                    <div class="chat-input-container">
+                      <div class="chat-input">
+                        <div class="inner">
+                          <input type="text" placeholder="type a message and press enter">
+                        </div>
+                      </div>
+                      <div class="control-toggle btn-group">
+                        <button class="btn btn-warning send">Send</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="conversation-tab-nav footer">
               <div class="inner">
                 <div class="tab-inner">
-                  <ul id="active-conversation-tabs" class="tabs "></ul>
+                  <ul id="active-conversation-tabs" class="tabs"></ul>
                 </div>
-                <div id="inactive-conversation" class="navbar ">
+                <div id="connversation-side-nav" class="navbar ">
                   <div class="navbar-inner">
                     <ul class="nav tabs">
                       <li class="dropup-container ops">
@@ -69,8 +111,8 @@
                         <ul id="inactive-conversation-tabs" class="dropup-menu">
                         </ul>
                       </li>
-                      <li>
-                        <a ><i class=" icon-group"></i></a>
+                      <li id="conference-tab">
+                        <a href="#conversation-tab-pane_conference"  ><i class=" icon-group"></i></a>
                       </li>
                     </ul>
                   </div>
@@ -80,32 +122,17 @@
             <div>
             </div>
           </div>
+
         </div>
 
-  <script id="video-invite-tmpl" type="text/x-jquery-tmpl">
-    <div class="video-call-state invite">
-      <div class="video-btns">
-        <button class="btn btn-large btn-primary call" data-loading-text="calling...">Start Video Call</button>
-      </div>
-    </div>
-  </script>
 
-  <script id="new-video-request-tmpl" type="text/x-jquery-tmpl">
-    <div class="video-call-state request" style="display:none;">
-      <h5 class="light_header">Video call from paul</h5>
-      <div class="video-btns">
-        <button class="btn btn-large btn-primary">Accept</button>
-        <button class="btn btn-large btn-danger">Decline</button>
-      </div>
-    </div>
-  </script>
-
+		
         <script id="chat-message-tmpl" type="text/x-jquery-tmpl">
           {{if isCurrentUser}}
           <li class="chat-message-container right_arrow carbon fader">
             <p class="chat-message-meta meta letter_pressed">
               <span class="name">You &raquo;</span>
-              <span class="time tip meta">3:15pm</span>
+              <span class="time tip meta" title="${formattedDate}">${formattedTime}</span>
             </p>
             {{if body && html}}
             <p  class="chat-message-body letter_pressed" title="${body}">
@@ -121,7 +148,7 @@
           <li class="chat-message-container left_arrow green fader">
             <p class="chat-message-meta meta letter_pressed">
               <span class="name">${from.name} &raquo;</span>
-              <span class="time tip meta">3:15pm</span>
+              <span class="time tip meta" title="${formattedDate}">${formattedTime}</span>
             </p>
             {{if body && html}}
             <p  class="chat-message-body letter_pressed" title="${body}">
@@ -137,8 +164,42 @@
 
         </script>
 
+		<script id="_status-tmp" type="text/x-jquery-tmpl">
+			<div class="_status">
+			<span class="ui-text">${message}</span>&nbsp;<button  class="btn  btn-danger cancel">Cancel</button></div>
+		</script>
+		
+		<script id="invite-tmpl" type="text/x-jquery-tmpl">
+        	<div class="video-btns">
+          		<button class="btn btn-large btn-block btn-primary call" data-loading-text="calling...">
+				<i class="icon-facetime-video"></i> Start Video Call</button>
+        	</div>
+		</script>
 
-
+		<script id="answer-tmpl" type="text/x-jquery-tmpl">
+        	<div class="ui-grid-a">
+             	<div class="ui-block-a">
+					<div class="btn-wrap"><button class="accept btn btn-large btn-block btn-primary">Accept Call</button></div>
+				</div>
+             	<div class="ui-block-b">
+					<div class="btn-wrap"><button class="reject btn btn-large btn-block btn-danger">Reject Call</button></div>
+				</div>
+        	</div>
+		</script>
+		
+		<script id="live-tmpl" type="text/x-jquery-tmpl">
+			<div class="card">
+				<div class="info hide fade">
+				    <div class="name"></div>
+					<button class="btn hang-up btn-danger">Hang Up</button>
+				</div>
+				<div id="remoteVideoWrap">
+          			<div id="remote" class="remote"></div>
+              		<div id="mirror" class="mirror"></div>
+				</div>
+        	</div>
+		</script>
+		
         <script id="conversation-tab-pane-tmpl" type="text/x-jquery-tmpl">
 
           <div id="conversation-tab-pane_${id}" class="conversation-tab-pane">
@@ -154,8 +215,8 @@
             <span class="image_wrap">
             <img class="icon  avatar_shadow little-rounded " src="${user.photo_url}">
             </span>
-                  <span class="name">${user.name}</span>
-                  <p class="hint "><span class="online online-status"></span> online</p>
+                  <span class="name ui-inline-text">${user.name}</span>
+                  <p class=""><span class="online online-status"></span> online</p>
                 </div>
               </div>
             </div>
@@ -163,23 +224,10 @@
               <div class="conversation-view " data-conversation-state="conversation">
                 <div class="chat-video-view">
                   <div class="video-status-bar">
-                      <p class="message">connecting...</p>
+                      <div class="error_container"></div>
+                      <p class="message"></p>
                   </div>
-                  <div class="video-call-view">
-
-                  </div>
-                  <div class="card">
-                    <div class="local">
-                      <video width="100%" height="100%" class="localVideo" autoplay="autoplay" muted="true"/>
-                    </div>
-                    <div class="remote">
-                      <video width="100%" height="100%" class="remoteVideo" autoplay="autoplay">
-                      </video>
-                      <div class="mini">
-                        <video width="100%" height="100%" class="miniVideo" autoplay="autoplay" muted="true"/>
-                      </div>
-                    </div>
-                  </div>
+                  <div class="video-call-view"></div>
                   <div class="shadow-bottom-wrap">
                     <div class="shadow-top"></div>
                   </div>
@@ -201,7 +249,7 @@
                     </div>
                   </div>
                   <div class="control-toggle btn-group">
-                    <button class="btn send_request"><i class="icon-paper-clip"></i></button>
+                    <button class="btn btn-warning send">Send</button>
                   </div>
                 </div>
               </div>
@@ -218,34 +266,50 @@
           </div>
         </script>
 
-        <script id="message-item-tmpl" type="text/x-jquery-tmpl">
-          <li id="${id}" class="item" data-action="conversations:show:message">
+        <script id="chat-item-tmpl" type="text/x-jquery-tmpl">
+          <li id="${id}" class="item" data-action="conversations:show">
             <a class="message">
               <div class="ui-btn-inner">
                 <div class="image_wrap">
-                  <img src="${from.photo_url}" class="icon little-rounded avatar_shadow"/>
+                  <img class="icon little-rounded avatar_shadow" src="${user.photo_url}"/>
                 </div>
                 <div class="info">
-                  <h6 class="light_header ui-inline-text name">${from.name}
-                  </h6>
-                  {{if body && html}}
-                  <p class="body" title="${body}">
-                    <span class="time tip meta" title="2nd October, 2012"><em>15:55pm </em></span>
-                    {{html html}}
-                  </p>
-                  {{else}}
-                  <p class="tip meta new">
-                    <span class="time " title="2nd October, 2012"><em>15:55pm </em></span></p>
-                  <p class="body">
-                    ${body}
-                  </p>
-                  {{/if}}
+                  <div class="info-wrap">
+                  <h6 class="light_header ui-inline-text name">${user.name}</h6>
+				  <div class="info-body"></div>
                 </div>
-
+                </div>
               </div>
             </a>
           </li>
         </script>
+
+ <script id="chat-info-tmpl" type="text/x-jquery-tmpl">
+<p class="body ui-inline-text" title="${notification.content}">
+    <span class="indicator"></span>
+	 ${notification.content}
+</p>
+<p class="chat-message-meta meta letter_pressed">
+    <span class="time " title="${notification.formattedDate}">${notification.formattedTime}</span>
+</p>
+</script>
+
+   <script id="indicator-tmpl" type="text/x-jquery-tmpl">
+     {{if notification.type=="chat"}}
+        {{if notification_counter > 0}}
+            <span class="badge badge-success">${notification_counter}</span><span class="label"></span>
+        {{else}}
+            <i class="icon-comments"></i>
+        {{/if}}
+     {{/if}}
+     {{if notification.type =="video"}}
+        {{if notification_counter > 0}}
+     <span class="badge badge-success">${unread}</span><span class="label"></span> <span class="badge badge-warning"><class="icon-facetime-video"></i></span><span class="label"></span>
+        {{else}}
+            <i class="icon-facetime-video"></i>
+        {{/if}}
+     {{/if}}
+   </script>
 
         <script id="inactive-conversation-tab-tmpl" type="text/x-jquery-tmpl">
           <li id="inactive-conversation-tab_${id}">
@@ -277,12 +341,12 @@
         </script>
 
         <script id="contact-item-tmpl" type="text/x-jquery-tmpl">
-          <li id='${id}' data-action='conversations:show'>
+          <li id='${id}' data-action='conversations:show:contact'>
             <a  class="contact">
               <div class="ui-btn-inner">
-          <span class="image_wrap">
-            <img class="icon little-rounded avatar_shadow" src="${photo_url}"/>
-          </span>
+                <div class="image_wrap">
+                  <img class="icon little-rounded avatar_shadow" src="${photo_url}"/>
+                </div>
                 <div class="info">
                   <span class="name ui-inline-text">${name}</span>
                   <p class="hint "><span class="online online-status"></span> online</p>
@@ -316,18 +380,14 @@
               </a>
               <ul class="nav items nav-list" data-affiliation-container="admin" ></ul>
             </li>
-            <li class="toggle-members" data-role="member">
-              <a>
-                <span class="ui-btn-inner">Members</span>
-              </a>
-              <ul class="nav items nav-list" data-affiliation-container="member"></ul>
-            </li>
-            <li class="toggle-visitor" data-role="admin">
-              <a>
-                <span class="ui-btn-inner">Visitors</span>
-              </a>
-              <ul class="nav items nav-list" data-affiliation-container="visitor"></ul>
-            </li>
           </ul>
+          <ul class="nav items nav-list tree" data-affiliation-container="member"></ul>
+        </script>
+
+        <script id="error-tmpl" type="text/x-jquery-tmpl">
+          <div class="alert alert-error fade in box-shadow-bottom">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <i class="icon-warning-sign"></i> <strong>${message}</strong>
+          </div>
         </script>
 <% end %>

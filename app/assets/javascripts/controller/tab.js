@@ -36,7 +36,7 @@ jQuery(function($){
             tab.attr('tabindex','0').parent().addClass(this.options.activeTabClass);
             this.tabBody.find('>div.'+this.options.activePanelClass).attr('aria-hidden',true).removeClass(this.options.activePanelClass);
             $( tab.attr('href') ).addClass(this.options.activePanelClass).attr('aria-hidden',false);
-            tab[0].focus();
+            ///tab[0].focus();
             //this.saveState(tab);
             this.App.trigger(tab.attr("data-action"))
         },
