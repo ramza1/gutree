@@ -1,60 +1,93 @@
-Blog::Application.routes.draw do
-  resources :articles
+Gutrees::Application.routes.draw do
+  get "comments/create"
 
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
+  get "users/show"
 
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
+  resources :comments
 
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
+  resources :categories
 
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  resources :tips do
+    resources :comments
+    member do
+      post :publish
+      post :delete_photo_tip
+      post :delete_link_tip
+    end
+  end
 
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+  resources :trees  do
+    member do
+      post :change_photo
+      get :all_branches
+      get :admins
+    end
+    collection do
+      post :create_request
+    end
 
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+    resources :branches  do
+      member do
+        post :change_photo
+        get :sub_branches
+        get :admins
+        get :settings
+        get :chat
+      end
+      member do
+        post :create_caption
+        get  :tips
+      end
+      collection do
+        get :tree
+        get :branch
+      end
+      resources :memberships do
+        collection do
+          get  :batch
+          post :batch
+        end
+      end
+      resources :broadcasts
+    end
+  end
 
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
 
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
 
-  # See how all your routes lay out with "rake routes"
+  devise_for :users, path_prefix: "account", path_names: {sign_in: "login", sign_out: "logout" }, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+  as :user do
+    match "account/users/sign_out", :to => "devise/sessions#destroy" ,:as=>"user_sign_out"
+    match '/user/home', :to => 'users#home',:as=> "user_root"
+
+  end
+
+  resources :memberships do
+    collection do
+      get  :batch
+      post :batch
+    end
+  end
+
+  resources :users   do
+    collection do
+      post :change_photo
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      resources :tokens,:only => [:create, :destroy]
+      controller :tokens do
+      end
+    end
+  end
+
+  resources :tags ,:only=>["index"]
+  match '/show', :to => 'home#show',:as=>"show"
+  get 'tags/search', to: 'tags#index',:as=>"tags"
+  get '/branches_available', to: 'branches#check_availability',:as=>"branches_available"
+  match '/connect', :to => 'chats#connect',:as=>"chat"
+  root :to => "home#index"
 end

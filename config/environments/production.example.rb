@@ -68,15 +68,15 @@ Gutrees::Application.configure do
   config.action_mailer.smtp_settings = {
       :address              => "smtp.gmail.com",
       :port                 => 587,
-      :domain               => 'gutrees.com',
+      :domain               => 'antrees.com',
       :user_name            => 'xxx@gmail.com',
       :password             => 'xxx',
       :authentication       => 'plain',
       :enable_starttls_auto => true  }
   ignore_exceptions = ExceptionNotifier.default_ignore_exceptions + [ActionView::MissingTemplate]
-  config.middleware.use ExceptionNotifier, :email_prefix => "[ERROR] ", :sender_address => 'noreply@gutrees.com', :exception_recipients => "evenmatrix@gmail.com", :ignore_exceptions => ignore_exceptions
+  config.middleware.use ExceptionNotifier, :email_prefix => "[ERROR] ", :sender_address => 'noreply@antrees.com', :exception_recipients => "evenmatrix@gmail.com", :ignore_exceptions => ignore_exceptions
 
-  config.action_mailer.default_url_options = { :host => "gutrees.com" }
+  config.action_mailer.default_url_options = { :host => "antrees.com" }
 
   Paperclip.options[:command_path] = "/usr/bin/"
 end

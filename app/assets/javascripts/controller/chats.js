@@ -1546,8 +1546,8 @@ jQuery(function($){
 
 
 jQuery(function($){
-    Spine.Controller.prototype.App.base_url="http://localhost:3000/"
-    Spine.Controller.prototype.App.bosh_addr = "http://localhost:5280/http-bind"
+    Spine.Controller.prototype.App.base_url="http:antrees.com"//"http://localhost:3000/"
+    Spine.Controller.prototype.App.bosh_addr = "http:antrees.com:5280/http-bind"//"http://localhost:5280/http-bind"
 	Spine.Controller.prototype.App.OPENTOK_API_KEY='23037872'
     Spine.Controller.prototype.App.isCurrentUser=function(user){
         if(this.user && user){

@@ -2,7 +2,7 @@ require "bundler/capistrano"
 
 load "config/recipes/base"
 load "config/recipes/ejabberd"
-load "config/recipes/java"
+load "config/recipes/rbenv"
 load "config/recipes/jruby"
 load "config/recipes/nginx"
 load "config/recipes/unicorn"
@@ -26,5 +26,7 @@ set :git_enable_submodules, 1
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
+
+
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
