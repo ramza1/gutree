@@ -2,7 +2,6 @@
 //= require strophe/md5
 //= require strophe/core
 //= require webrtc/TB.min
-//= require adapter
 //= require model/chat
 //= require controller/tab
 jQuery(function($){
