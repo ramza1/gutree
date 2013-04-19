@@ -33,7 +33,6 @@
 //= require jQuery.selectmenu
 //= require jQuery.listbuilder
 //= require jQuery.tree
-//= require profiles
 //= require jquery.tokeninput
 //= require jquery.wookmark.min
 //= require chosen-jquery
