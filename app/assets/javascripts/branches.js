@@ -6,7 +6,7 @@
 //= require controller/browser
 //= require controller/tips
 //= require controller/chats
-
+//= require_self
 jQuery(function($){
     window.TipLink= Spine.Controller.create({
         elements:{

@@ -5,6 +5,7 @@
 //= require model/branch_item
 //= require controller/browser
 //= require controller/new_branch
+//= require_self
 jQuery(function($){
     window.BranchList= Spine.Controller.create({
         elements:{

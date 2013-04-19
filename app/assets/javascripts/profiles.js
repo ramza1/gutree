@@ -2,6 +2,7 @@
 //= require jquery.upload
 //= require jquery.tmpl.min
 //= require spine/spine
+//= require_self
 jQuery(function($){
     window.BrowsePhoto= Spine.Controller.create({
         elements:{
