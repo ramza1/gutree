@@ -1548,6 +1548,7 @@ jQuery(function($){
     Spine.Controller.prototype.App.base_url="http://antrees.com/"//"http://localhost:3000/"
     Spine.Controller.prototype.App.bosh_addr = "http://antrees.com:5280/http-bind"//"http://localhost:5280/http-bind"
 	Spine.Controller.prototype.App.OPENTOK_API_KEY='23037872'
+    Spine.Controller.prototype.App.BRANCH_SERVICE="branch.antrees.com"//branch.rzaartz.local
     Spine.Controller.prototype.App.isCurrentUser=function(user){
         if(this.user && user){
             return this.user.user_id===user.user_id
@@ -1584,7 +1585,6 @@ jQuery(function($){
 			this.App.NS_CALL_SETUP='http://antrees.com/call_setup'
             this.App.NS_ANTREES='http://antrees.com'
 			this.App.NS_ROSTER="jabber:iq:roster"
-            this.App.BRANCH_SERVICE="branch.rzaartz.local";
             this.App.BRANCH_JID=this.App.branch.id+"@"+this.App.BRANCH_SERVICE
             //this.doInit();
             //this.runTests()
