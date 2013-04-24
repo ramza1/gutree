@@ -588,7 +588,7 @@ jQuery(function($){
                 this.chatMessageView.css({
                     'height':this.contentH+"px"
                 })
-	        },
+	        }
     })
 })
 
@@ -947,8 +947,7 @@ jQuery(function($){
         },
         cancelCall:function(){
             console.log("cancelCall")
-			this.setStatus("Canceling...");
-			//this.cancelBtn.button('loading')
+            this.el.find('.cancel').button('loading')
 			this.terminateCall();
         },
         terminateCall:function(){
@@ -1050,6 +1049,7 @@ jQuery(function($){
 			this.setStatus("");	
 		},
 		hangUp:function(){
+            this.el.find('.hang-up').button('loading')
             this.terminateCall()
 			if(this.opentokSession.connection){
 				this.opentokSession.disconnect();
@@ -1097,7 +1097,7 @@ jQuery(function($){
             '.chat-message-view':'chatMessageView',
             '.chat-video-view':'chatVideoView',
             ".footer .chat-input input": "input",
-            ".videoOp":"videoToggle",
+            ".videoOp":"videoToggle"
         },
         proxied:["remove","render","updateUI","toggleFaceTimeVideo"],
         events:{
