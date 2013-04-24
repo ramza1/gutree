@@ -26,11 +26,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.scss" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.scss" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/app.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4989" column="38" selection-start="116557" selection-end="116557" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="5433" column="15" selection-start="128858" selection-end="128858" vertical-scroll-proportion="0.43345323">
+              <folding>
+                <element signature="e#129323#129684#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -38,10 +40,8 @@
       <file leaf-file-name="_chat.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/branches/_chat.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="186" column="84" selection-start="7492" selection-end="7531" vertical-scroll-proportion="-9.333333">
-              <folding>
-                <element signature="tag#div#1;tag#div#0;tag#div#1;tag#div#0;tag#div#0;tag#div#1;tag#div#0" expanded="false" />
-              </folding>
+            <state line="191" column="32" selection-start="7488" selection-end="7488" vertical-scroll-proportion="-6.25">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -49,10 +49,8 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/branches/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="268" column="52" selection-start="13027" selection-end="13027" vertical-scroll-proportion="-7.8333335">
-              <folding>
-                <element signature="tag#div#1;tag#div#2;tag#div#0;tag#section#0" expanded="false" />
-              </folding>
+            <state line="268" column="52" selection-start="13027" selection-end="13027" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -69,21 +67,17 @@
       <file leaf-file-name="chat.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/model/chat.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="330" column="17" selection-start="9048" selection-end="9048" vertical-scroll-proportion="0.0">
+            <state line="330" column="17" selection-start="9201" selection-end="9201" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chats.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="chats.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controller/chats.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1569" column="20" selection-start="59326" selection-end="59326" vertical-scroll-proportion="0.11151079">
-              <folding>
-                <element signature="e#7876#13262#0" expanded="false" />
-                <element signature="e#23832#24801#0" expanded="false" />
-                <element signature="e#24822#36997#0" expanded="false" />
-              </folding>
+            <state line="1574" column="20" selection-start="59422" selection-end="59422" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -119,16 +113,16 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/controller/tab.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/model/chats.js" />
         <option value="$PROJECT_DIR$/app/views/branches/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/app.scss" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/model/chat.js" />
-        <option value="$PROJECT_DIR$/app/views/branches/_chat.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/controller/chats.js" />
+        <option value="$PROJECT_DIR$/app/views/branches/_chat.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/app.scss" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="60" />
-    <option name="y" value="73" />
+    <option name="x" value="14" />
+    <option name="y" value="22" />
     <option name="width" value="1280" />
     <option name="height" value="715" />
   </component>
@@ -158,6 +152,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -447,80 +443,22 @@
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gutrees" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gutrees" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gutrees" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gutrees" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="RailsProjectView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="org.jetbrains.plugins.ruby.settings.RubyIdeSdkConfigurable" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../gutrees_service" />
     <property name="FullScreen" value="false" />
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -784,11 +722,11 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Rake.test" />
-      <item index="1" class="java.lang.String" itemvalue="Rake.spec" />
-      <item index="2" class="java.lang.String" itemvalue="Rails.Production: gutrees" />
-      <item index="3" class="java.lang.String" itemvalue="Rails.Development: gutrees" />
-      <item index="4" class="java.lang.String" itemvalue="Ruby.user" />
+      <item index="0" class="java.lang.String" itemvalue="Ruby.user" />
+      <item index="1" class="java.lang.String" itemvalue="Rake.test" />
+      <item index="2" class="java.lang.String" itemvalue="Rake.spec" />
+      <item index="3" class="java.lang.String" itemvalue="Rails.Production: gutrees" />
+      <item index="4" class="java.lang.String" itemvalue="Rails.Development: gutrees" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -824,14 +762,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="60" y="73" width="1280" height="715" extended-state="0" />
+    <frame x="14" y="22" width="1280" height="715" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29092383" sideWeight="0.671521" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29578605" sideWeight="0.671521" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847896" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -900,6 +838,13 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/controllers/chats_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="19" selection-start="690" selection-end="694" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../poploda/app/models/airtime.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="77" selection-start="1704" selection-end="1704" vertical-scroll-proportion="0.83633095" />
@@ -913,11 +858,6 @@
     <entry file="file://$PROJECT_DIR$/app/controllers/branches_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="76" column="14" selection-start="2130" selection-end="2140" vertical-scroll-proportion="1.8717047" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/chat/model/AFIssue.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="336" selection-end="625" vertical-scroll-proportion="0.2967626" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/assets/javascripts/jQuery.tree.js">
@@ -952,19 +892,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/app.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4989" column="38" selection-start="116557" selection-end="116557" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/branches/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="268" column="52" selection-start="13027" selection-end="13027" vertical-scroll-proportion="-7.8333335">
-          <folding>
-            <element signature="tag#div#1;tag#div#2;tag#div#0;tag#section#0" expanded="false" />
-          </folding>
+        <state line="268" column="52" selection-start="13027" selection-end="13027" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -977,27 +908,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/model/chat.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="330" column="17" selection-start="9048" selection-end="9048" vertical-scroll-proportion="0.0">
+        <state line="330" column="17" selection-start="9201" selection-end="9201" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controller/chats.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1574" column="20" selection-start="59422" selection-end="59422" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/branches/_chat.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="186" column="84" selection-start="7492" selection-end="7531" vertical-scroll-proportion="-9.333333">
-          <folding>
-            <element signature="tag#div#1;tag#div#0;tag#div#1;tag#div#0;tag#div#0;tag#div#1;tag#div#0" expanded="false" />
-          </folding>
+        <state line="191" column="32" selection-start="7488" selection-end="7488" vertical-scroll-proportion="-6.25">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controller/chats.js">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/app.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1569" column="20" selection-start="59326" selection-end="59326" vertical-scroll-proportion="0.11151079">
+        <state line="5433" column="15" selection-start="128858" selection-end="128858" vertical-scroll-proportion="0.43345323">
           <folding>
-            <element signature="e#7876#13262#0" expanded="false" />
-            <element signature="e#23832#24801#0" expanded="false" />
-            <element signature="e#24822#36997#0" expanded="false" />
+            <element signature="e#129323#129684#0" expanded="false" />
           </folding>
         </state>
       </provider>
