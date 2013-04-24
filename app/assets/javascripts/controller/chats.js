@@ -1,7 +1,6 @@
 //= require strophe/base64
 //= require strophe/md5
 //= require strophe/core
-//= require webrtc/TB.min
 //= require model/chat
 //= require controller/tab
 jQuery(function($){
@@ -955,13 +954,13 @@ jQuery(function($){
                 to: this.App.BRANCH_JID ,type:"set"})
                 .c("call-terminate", {xmlns:this.App.NS_CALL_SETUP,sid:this.sid}),
                 this.proxy(function(iq){
-					this.reset();
                 }),
                 this.proxy(function(iq){
 					console.log("error terminate",iq)
-					this.reset();
                 })
             );
+
+            this.reset();
         },
         onAccept:function(sid){
             if(this.sid===sid){
@@ -993,8 +992,6 @@ jQuery(function($){
 				width:"50%"
 			});
             this.opentokSession.publish(publisher);
-			//this.setStatus("waiting for remote peer to join...");
-			  // Subscribe to streams that were in the session when we connected
 			this.subscribeToStreams(event.streams);
 			//send invitaion to remote peer
 	    },
@@ -1050,10 +1047,10 @@ jQuery(function($){
 		},
 		hangUp:function(){
             this.el.find('.hang-up').button('loading')
-            this.terminateCall()
 			if(this.opentokSession.connection){
 				this.opentokSession.disconnect();
 			}
+            this.terminateCall()
 		},
         setStatus:function(status){
             this.statusMessageEl.html(status)
