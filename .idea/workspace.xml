@@ -26,12 +26,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.scss" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="app.scss" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/app.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5433" column="15" selection-start="128858" selection-end="128858" vertical-scroll-proportion="0.43345323">
+            <state line="5437" column="20" selection-start="128943" selection-end="128943" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#129323#129684#0" expanded="false" />
+                <element signature="e#129345#129706#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -67,17 +67,19 @@
       <file leaf-file-name="chat.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/model/chat.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="330" column="17" selection-start="9201" selection-end="9201" vertical-scroll-proportion="0.0">
+            <state line="335" column="20" selection-start="9236" selection-end="9249" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chats.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="chats.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controller/chats.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1574" column="20" selection-start="59422" selection-end="59422" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="1980" column="16" selection-start="75841" selection-end="75841" vertical-scroll-proportion="0.97302157">
+              <folding>
+                <element signature="e#25980#38709#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -85,7 +87,7 @@
       <file leaf-file-name="chats_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/chats_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="19" selection-start="690" selection-end="694" vertical-scroll-proportion="0.0">
+            <state line="8" column="134" selection-start="430" selection-end="430" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -101,7 +103,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/assets/javascripts/controller/tips.js" />
         <option value="$PROJECT_DIR$/app/views/photo_tips/_photo_tip.html.erb" />
         <option value="$PROJECT_DIR$/app/views/tips/_tip.html.erb" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -114,9 +115,10 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/model/chats.js" />
         <option value="$PROJECT_DIR$/app/views/branches/show.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/model/chat.js" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/controller/chats.js" />
         <option value="$PROJECT_DIR$/app/views/branches/_chat.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/chats_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/app.scss" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/controller/chats.js" />
       </list>
     </option>
   </component>
@@ -397,32 +399,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gutrees" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gutrees" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -901,22 +877,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/chats_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="19" selection-start="690" selection-end="694" vertical-scroll-proportion="0.0">
+        <state line="8" column="134" selection-start="430" selection-end="430" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/model/chat.js">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/app.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="330" column="17" selection-start="9201" selection-end="9201" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controller/chats.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1574" column="20" selection-start="59422" selection-end="59422" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="5437" column="20" selection-start="128943" selection-end="128943" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#129345#129706#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -927,11 +898,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/app.scss">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/model/chat.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5433" column="15" selection-start="128858" selection-end="128858" vertical-scroll-proportion="0.43345323">
+        <state line="335" column="20" selection-start="9236" selection-end="9249" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controller/chats.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1980" column="16" selection-start="75841" selection-end="75841" vertical-scroll-proportion="0.97302157">
           <folding>
-            <element signature="e#129323#129684#0" expanded="false" />
+            <element signature="e#25980#38709#0" expanded="false" />
           </folding>
         </state>
       </provider>

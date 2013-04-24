@@ -176,6 +176,7 @@ jQuery(function($){
             this.cached=false;
         },
         update:function(item){
+            if(this.item.id!=item.id) return;
             this.item =item
 		    if(this.item.notification){
 			this.setDateTime(this.item)
@@ -426,12 +427,11 @@ jQuery(function($){
 			this.updateUI()
         },
         onNewMessage:function(message){
-			console.log("on new message",$('#chatAudio')[0])
+            if(message.type!=Message.MESSAGE_TYPE.GROUP_CHAT)return
 			message.assertFrom();
             if(!this.App.isCurrentUser(message.from)){
                 //this.conversation.onMessage(message)
             }
-			$('#chatAudio')[0].play();
             this.addOne(message)
         },
         addOne:function(message){
@@ -485,10 +485,11 @@ jQuery(function($){
                     to:this.App.user,
                     body:body.text(),
                     html:null,
-                    type:"groupchat",
+                    type:Message.MESSAGE_TYPE.GROUP_CHAT,
                     date:new Date()
                 })
             }
+            $('#chatAudio')[0].play();
             return true;
         },
         checkCreateMessage:function(e){
@@ -509,7 +510,7 @@ jQuery(function($){
                 to_id:this.App.branch.id,
                 body:value,
                 html:null,
-                type:"groupchat",
+                type:Message.MESSAGE_TYPE.GROUP_CHAT,
                 date:new Date()
             })
             this.input.val("");
@@ -612,6 +613,7 @@ jQuery(function($){
 			this.messageControllers={}
         },
 		onNewMessage:function(message){
+            if(message.type!=Message.MESSAGE_TYPE.CHAT) return;
 			message.assertFrom();
             if(!this.App.isCurrentUser(message.from)){
                 this.conversation.onMessage(message)
@@ -1048,6 +1050,7 @@ jQuery(function($){
 			this.setStatus("");	
 		},
 		hangUp:function(){
+            this.terminateCall()
 			if(this.opentokSession.connection){
 				this.opentokSession.disconnect();
 			}
@@ -1979,9 +1982,10 @@ jQuery(function($){
                     to:this.App.user,
                     body:body.text(),
 					html:null,
-                    type:"chat",
+                    type:Message.MESSAGE_TYPE.CHAT,
                     date:new Date()
              })
+            $('#chatAudio')[0].play();
              this.App.trigger("chats:show")
         }
     })
