@@ -3,6 +3,7 @@
 //= require jquery.tmpl.min
 //= require spine/spine
 //= require model/branch_item
+//= require webrtc/TB.min
 //= require controller/browser
 //= require controller/tips
 //= require controller/chats
