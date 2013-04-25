@@ -30,9 +30,7 @@
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/app.scss">
           <provider selected="true" editor-type-id="text-editor">
             <state line="5437" column="20" selection-start="128943" selection-end="128943" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#129345#129706#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -40,7 +38,7 @@
       <file leaf-file-name="_chat.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/branches/_chat.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="194" column="76" selection-start="7676" selection-end="7683" vertical-scroll-proportion="-15.625">
+            <state line="194" column="76" selection-start="7676" selection-end="7683" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -49,16 +47,16 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/branches/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="313" column="78" selection-start="15186" selection-end="15186" vertical-scroll-proportion="-10.0">
+            <state line="344" column="22" selection-start="16155" selection-end="16155" vertical-scroll-proportion="-0.625">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="application.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="66" selection-start="135" selection-end="135" vertical-scroll-proportion="-2.5">
+            <state line="4" column="54" selection-start="117" selection-end="123" vertical-scroll-proportion="0.110091746">
               <folding />
             </state>
           </provider>
@@ -67,25 +65,16 @@
       <file leaf-file-name="contact.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/contact.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0">
+            <state line="6" column="50" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chat.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/model/chat.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="335" column="20" selection-start="9236" selection-end="9249" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chats.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="chats.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controller/chats.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="24" selection-start="75" selection-end="75" vertical-scroll-proportion="0.053956833">
+            <state line="69" column="16" selection-start="2524" selection-end="2524" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -123,14 +112,14 @@
         <option value="$PROJECT_DIR$/app/controllers/chats_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/app.scss" />
         <option value="$PROJECT_DIR$/app/views/branches/_chat.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/views/branches/show.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/controller/chats.js" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="14" />
+    <option name="x" value="367" />
     <option name="y" value="22" />
     <option name="width" value="1280" />
     <option name="height" value="715" />
@@ -161,8 +150,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="RailsProjectView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -361,94 +350,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gutrees" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gutrees" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stylesheets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gutrees" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gutrees" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gutrees" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gutrees" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gutrees" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gutrees" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -458,7 +359,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="org.jetbrains.plugins.ruby.settings.RubyIdeSdkConfigurable" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../gutrees_service" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../poploda" />
     <property name="FullScreen" value="false" />
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
@@ -767,7 +668,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="14" y="22" width="1280" height="715" extended-state="0" />
+    <frame x="367" y="22" width="1280" height="715" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -883,13 +784,6 @@
         <state line="1" column="2" selection-start="37" selection-end="63" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/contact.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/chats_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="36" selection-start="1005" selection-end="1005" vertical-scroll-proportion="0.0">
@@ -897,46 +791,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/branches/_chat.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="194" column="76" selection-start="7676" selection-end="7683" vertical-scroll-proportion="-15.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/app.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5437" column="20" selection-start="128943" selection-end="128943" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#129345#129706#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="66" selection-start="135" selection-end="135" vertical-scroll-proportion="-2.5">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/model/chat.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="335" column="20" selection-start="9236" selection-end="9249" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="362" column="21" selection-start="10398" selection-end="10398" vertical-scroll-proportion="0.9172662" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/branches/show.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/models/contact.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="313" column="78" selection-start="15186" selection-end="15186" vertical-scroll-proportion="-10.0">
+        <state line="6" column="50" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controller/chats.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="24" selection-start="75" selection-end="75" vertical-scroll-proportion="0.053956833">
+        <state line="69" column="16" selection-start="2524" selection-end="2524" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/branches/_chat.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="194" column="76" selection-start="7676" selection-end="7683" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/branches/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="344" column="22" selection-start="16155" selection-end="16155" vertical-scroll-proportion="-0.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="54" selection-start="117" selection-end="123" vertical-scroll-proportion="0.110091746">
           <folding />
         </state>
       </provider>
