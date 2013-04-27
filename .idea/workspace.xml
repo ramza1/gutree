@@ -208,10 +208,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="20130427004850_change_state_to_contacts.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="20130427004850_change_state_to_contacts.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db/migrate/20130427004850_change_state_to_contacts.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="41" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0">
+            <state line="2" column="47" selection-start="114" selection-end="114" vertical-scroll-proportion="0.054844607">
               <folding />
             </state>
           </provider>
@@ -220,16 +220,16 @@
       <file leaf-file-name="20130427003243_add_state_to_contacts.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/migrate/20130427003243_add_state_to_contacts.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="51" selection-end="165" vertical-scroll-proportion="0.0">
+            <state line="2" column="38" selection-start="102" selection-end="102" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chats_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="chats_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/chats_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="57" selection-start="624" selection-end="624" vertical-scroll-proportion="0.4775281">
+            <state line="18" column="46" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -276,8 +276,8 @@
         <option value="$PROJECT_DIR$/app/views/branches/show.html.erb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/controllers/chats_controller.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20130427003243_add_state_to_contacts.rb" />
         <option value="$PROJECT_DIR$/app/models/contact.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130427003243_add_state_to_contacts.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20130427004850_change_state_to_contacts.rb" />
       </list>
     </option>
@@ -1216,20 +1216,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20130427003243_add_state_to_contacts.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="51" selection-end="165" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20130427004850_change_state_to_contacts.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="41" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/contact.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="17" selection-start="386" selection-end="386" vertical-scroll-proportion="0.0">
@@ -1239,7 +1225,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/chats_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="57" selection-start="624" selection-end="624" vertical-scroll-proportion="0.4775281">
+        <state line="18" column="46" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130427003243_add_state_to_contacts.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="38" selection-start="102" selection-end="102" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130427004850_change_state_to_contacts.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="47" selection-start="114" selection-end="114" vertical-scroll-proportion="0.054844607">
           <folding />
         </state>
       </provider>
