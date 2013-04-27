@@ -2,11 +2,10 @@ require "ruby_bosh"
 class ChatsController < ApplicationController
 
   def connect
-    current_user.ensure_authentication_token!
     begin
-      logger.info "authenticating #{current_user.id} with password #{current_user.authentication_token}"
+    begin
       @session_jid, @session_id, @session_random_id =
-      RubyBOSH.initialize_session("#{current_user.id}@antrees.com",current_user.authentication_token, "http://localhost:5280/http-bind")
+      RubyBOSH.initialize_session("#{current_user.id}@antrees.com",current_user.id, "http://localhost:5280/http-bind")
          # RubyBOSH.initialize_session("paul@rzaartz.local","foo", "http://localhost:5280/http-bind")
       render :json => {
           :jid=>@session_jid,
@@ -24,4 +23,5 @@ class ChatsController < ApplicationController
     end
   end
 
+end
 end

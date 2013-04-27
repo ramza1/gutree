@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130413233659) do
+ActiveRecord::Schema.define(:version => 20130427004850) do
 
   create_table "admins", :force => true do |t|
     t.boolean  "manage_branches", :default => false
@@ -86,11 +86,11 @@ ActiveRecord::Schema.define(:version => 20130413233659) do
     t.integer  "user_id"
     t.integer  "branch_id"
     t.string   "jid"
-    t.string   "presence"
     t.string   "show"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "affiliation"
+    t.integer  "state"
   end
 
   add_index "contacts", ["branch_id"], :name => "index_contacts_on_branch_id"
