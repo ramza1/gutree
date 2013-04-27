@@ -211,7 +211,7 @@
       <file leaf-file-name="20130427004850_change_state_to_contacts.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db/migrate/20130427004850_change_state_to_contacts.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="47" selection-start="114" selection-end="114" vertical-scroll-proportion="0.054844607">
+            <state line="2" column="7" selection-start="74" selection-end="74" vertical-scroll-proportion="0.054844607">
               <folding />
             </state>
           </provider>
@@ -930,7 +930,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3006483" sideWeight="0.671521" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30226904" sideWeight="0.671521" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847896" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -1239,7 +1239,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20130427004850_change_state_to_contacts.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="47" selection-start="114" selection-end="114" vertical-scroll-proportion="0.054844607">
+        <state line="2" column="7" selection-start="74" selection-end="74" vertical-scroll-proportion="0.054844607">
           <folding />
         </state>
       </provider>
