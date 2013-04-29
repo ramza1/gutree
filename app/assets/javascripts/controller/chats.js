@@ -865,6 +865,7 @@ jQuery(function($){
                 })
         },
         onNewCall:function(call){
+			console.log("new-call",call)
 			if(!this.el.hasClass("active"))
 			this.conversationController.showVideo()
             this.state=this.INITIALIZING;
@@ -886,15 +887,13 @@ jQuery(function($){
 				console.log("onNewCall",this.conversation)
                 this.sid=call.sid
                 this.token=call.token
-                //prepare invite notification
-                this.videoCallView.empty();
+                this.videoCallView.hide();
                 this.showAnswer();
             }
         },
         showInvite:function(){
             //this.videoCallView.html($("#invite-tmpl").tmpl())
 			this.setStatus($("#invite-tmpl").tmpl());
-            //this.videoCallView=this.el.find(".")
         },
         showAnswer:function(){
            //this.videoCallView.html($("#answer-tmpl").tmpl())
@@ -906,6 +905,7 @@ jQuery(function($){
         },
         showLive:function(){
             this.videoCallView.html($("#live-tmpl").tmpl());
+
         },
         showError:function(message){
            var tmpl= $("#error-tmpl").tmpl({message:message})
@@ -992,8 +992,8 @@ jQuery(function($){
             this.state=this.CONNECTED;
 	        this.showLive();
 			var publisher = TB.initPublisher(this.App.OPENTOK_API_KEY, 'mirror',{
-				height:"40%",
-				width:"40%"
+				height:"100%",
+				width:"100%"
 			});
             this.opentokSession.publish(publisher);
 			this.subscribeToStreams(event.streams);
@@ -1010,7 +1010,7 @@ jQuery(function($){
 		},
 		streamDestroyedHandler:function(event){
             this.reset();
-            this.showError("Remote peer hung up unexpectedly")
+            this.showError("Remote peer hung up")
 			this.terminateCall()			
 		},
 		connectionDestroyed:function(event){
@@ -1074,7 +1074,7 @@ jQuery(function($){
             this.conversation.call=null
 			this.enableAnswerButtons()
 			this.setStatus("");
-			this.videoCallView.empty();
+			this.videoCallView.hide();
 			this.showInvite()
 			this.opentokSession=null
         },
