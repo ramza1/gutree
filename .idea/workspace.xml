@@ -60,10 +60,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/branches/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="59" selection-start="1642" selection-end="1642" vertical-scroll-proportion="0.24060151">
+            <state line="54" column="56" selection-start="2155" selection-end="2155" vertical-scroll-proportion="-10.958333">
               <folding />
             </state>
           </provider>
@@ -98,10 +98,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="7" selection-start="458" selection-end="458" vertical-scroll-proportion="0.0">
+            <state line="16" column="7" selection-start="458" selection-end="458" vertical-scroll-proportion="0.42179263">
               <folding />
             </state>
           </provider>
@@ -887,13 +887,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="7" selection-start="458" selection-end="458" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/app.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5467" column="40" selection-start="129318" selection-end="129318" vertical-scroll-proportion="0.0">
@@ -933,7 +926,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/branches/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="59" selection-start="1642" selection-end="1642" vertical-scroll-proportion="0.24060151">
+        <state line="54" column="56" selection-start="2155" selection-end="2155" vertical-scroll-proportion="-10.958333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="7" selection-start="458" selection-end="458" vertical-scroll-proportion="0.42179263">
           <folding />
         </state>
       </provider>
