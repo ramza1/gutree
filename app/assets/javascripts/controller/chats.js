@@ -175,7 +175,7 @@ jQuery(function($){
             this.cached=false;
         },
         update:function(item){
-            if(this.items.id==item.id){
+            if(this.item.id==item.id){
             this.item =item
 		    if(this.item.notification){
 			this.setDateTime(this.item)

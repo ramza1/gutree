@@ -62,15 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="show.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/branches/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="61" selection-start="4229" selection-end="4229" vertical-scroll-proportion="-17.208334">
-              <folding>
-                <marker date="1367205693000" expanded="true" signature="56:146" placeholder="do ... end" />
-                <marker date="1367205693000" expanded="true" signature="176:792" placeholder="do ... end" />
-                <marker date="1367205693000" expanded="true" signature="15057:15201" placeholder="do ... end" />
-              </folding>
+            <state line="47" column="95" selection-start="1774" selection-end="1774" vertical-scroll-proportion="0.4793233">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -87,10 +83,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chats.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="chats.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controller/chats.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1021" column="47" selection-start="36584" selection-end="36584" vertical-scroll-proportion="0.27158272">
+            <state line="177" column="24" selection-start="6262" selection-end="6262" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -157,10 +153,10 @@
         <option value="$PROJECT_DIR$/app/views/home/index.html.erb" />
         <option value="$PROJECT_DIR$/app/models/branch.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/app.scss" />
-        <option value="$PROJECT_DIR$/app/views/branches/show.html.erb" />
         <option value="$PROJECT_DIR$/Capfile" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/controller/chats.js" />
+        <option value="$PROJECT_DIR$/app/views/branches/show.html.erb" />
       </list>
     </option>
   </component>
@@ -926,17 +922,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/branches/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="61" selection-start="4229" selection-end="4229" vertical-scroll-proportion="-17.208334">
-          <folding>
-            <marker date="1367205693000" expanded="true" signature="56:146" placeholder="do ... end" />
-            <marker date="1367205693000" expanded="true" signature="176:792" placeholder="do ... end" />
-            <marker date="1367205693000" expanded="true" signature="15057:15201" placeholder="do ... end" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Capfile">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="22" selection-start="87" selection-end="87" vertical-scroll-proportion="0.0">
@@ -953,7 +938,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controller/chats.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1021" column="47" selection-start="36584" selection-end="36584" vertical-scroll-proportion="0.27158272">
+        <state line="177" column="24" selection-start="6262" selection-end="6262" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/branches/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="95" selection-start="1774" selection-end="1774" vertical-scroll-proportion="0.4793233">
           <folding />
         </state>
       </provider>
