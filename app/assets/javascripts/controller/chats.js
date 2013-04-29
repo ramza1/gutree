@@ -865,7 +865,6 @@ jQuery(function($){
                 })
         },
         onNewCall:function(call){
-			this.reset()
 			if(!this.el.hasClass("active"))
 			this.conversationController.showVideo()
             this.state=this.INITIALIZING;
@@ -888,6 +887,7 @@ jQuery(function($){
                 this.sid=call.sid
                 this.token=call.token
                 //prepare invite notification
+                this.videoCallView.empty();
                 this.showAnswer();
             }
         },
