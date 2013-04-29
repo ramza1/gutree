@@ -29,7 +29,7 @@
     </div></div>
 <section id="main" class="center_panel">
   <div class="container-fluid">
-  <div class="banner" style="display:none;">
+  <div class="banner">
     <img src="/assets/banner1.jpg"/>
   </div>
   <div class="breadcrumb-container" >
@@ -45,7 +45,7 @@
           <div class="grid-item-inner">
             <div id="upost">
               <a class="avatar lt">
-                <img src="/assets/image_8.jpg" class="avatar_shadow light-rounded" width="50px" height="50px"/>
+                <%= image_tag current_user.photo.url(:icon), :alt =>current_user.name %>
               </a>
               <div class="upost-container left_arrow">
                 <div class="upost-container-inner">
