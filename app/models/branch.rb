@@ -21,8 +21,8 @@ class Branch < ActiveRecord::Base
   has_many :tips,:dependent=>:destroy,:conditions => { :published => true }
 
   has_attached_file :photo,:styles => {:icon=>"50x50#",:icon_2x=>"100x100#",:thumb => "200x297>", :croppable => '600x600>'},
-                    :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
-                    :url => "/system/:attachment/:id/:style/:filename"
+                    :path => ":rails_root/public/system/:class/:attachment/:id/:style/:filename",
+                    :url => "/system/:class/:attachment/:id/:style/:filename"
 
   has_one :caption ,:as => :captionable
 

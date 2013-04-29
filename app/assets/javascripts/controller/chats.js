@@ -175,7 +175,7 @@ jQuery(function($){
             this.cached=false;
         },
         update:function(item){
-            if(this.item.id!=item.id) return;
+            if(this.items.id==item.id){
             this.item =item
 		    if(this.item.notification){
 			this.setDateTime(this.item)
@@ -184,6 +184,7 @@ jQuery(function($){
             this.indicatorEl=this.infoBodyEl.find(".indicator")
             this.indicatorEl.html(this.templateIndicator(this.item))
 		    }
+            }
             //this.times.text(this.item.last_active_formatted_time)
             //this.render();
         },
@@ -642,6 +643,7 @@ jQuery(function($){
         template:function(){
         },
         render:function(){
+            /**
             this.itemsEl.empty();
             if(this.messages.length>0) {
                 this.addAll(this.messages)
@@ -651,6 +653,7 @@ jQuery(function($){
                     this.addAll(this.messages)
                 }
             }
+             ***/
         },
         addAll:function(items){
 		   $.each(items,this.proxy(function(i){
@@ -862,7 +865,7 @@ jQuery(function($){
                 })
         },
         onNewCall:function(call){
-			console.log("new-call",call)
+			this.reset()
 			if(!this.el.hasClass("active"))
 			this.conversationController.showVideo()
             this.state=this.INITIALIZING;
@@ -891,6 +894,7 @@ jQuery(function($){
         showInvite:function(){
             //this.videoCallView.html($("#invite-tmpl").tmpl())
 			this.setStatus($("#invite-tmpl").tmpl());
+            //this.videoCallView=this.el.find(".")
         },
         showAnswer:function(){
            //this.videoCallView.html($("#answer-tmpl").tmpl())
@@ -988,8 +992,8 @@ jQuery(function($){
             this.state=this.CONNECTED;
 	        this.showLive();
 			var publisher = TB.initPublisher(this.App.OPENTOK_API_KEY, 'mirror',{
-				height:"100%",
-				width:"50%"
+				height:"40%",
+				width:"40%"
 			});
             this.opentokSession.publish(publisher);
 			this.subscribeToStreams(event.streams);
@@ -1038,7 +1042,7 @@ jQuery(function($){
 			    this.opentokSession.subscribe(streams[i],"remote",
 					{
 						height:"100%",
-						width:"50%"
+						width:"100%"
 					}	
 			    );
 			  }
@@ -1546,7 +1550,7 @@ jQuery(function($){
 
 jQuery(function($){
     Spine.Controller.prototype.App.base_url="http://antrees.com/"//"http://localhost:3000/"
-    Spine.Controller.prototype.App.bosh_addr = "http://antrees.com:5280/http-bind"//"http://localhost:5280/http-bind"
+    Spine.Controller.prototype.App.bosh_addr = "http://antrees.com/http-bind"//"http://localhost:5280/http-bind"
 	Spine.Controller.prototype.App.OPENTOK_API_KEY='23037872'
     Spine.Controller.prototype.App.BRANCH_SERVICE="branch.antrees.com"//branch.rzaartz.local
     Spine.Controller.prototype.App.isCurrentUser=function(user){
