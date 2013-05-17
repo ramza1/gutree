@@ -2866,7 +2866,6 @@ border:1px solid #596c54;
     margin: 20px 0 0;
     a {
     display: inline-block;
-    font-weight: bold;
     background: #F7F8F1;
     padding: 4px 6px;
     color: #1DA2C1;
@@ -2874,7 +2873,7 @@ border:1px solid #596c54;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
-      line-height: 20px;
+    line-height: 20px;
     border: 1px solid #CBD5D6;
     -webkit-transition: all 0.4s linear;
     -moz-transition: all 0.4s linear;
@@ -5460,12 +5459,12 @@ height:100%;
 }
 #mirror {
   position: absolute;
-  left:30px;
-  bottom: 30px;
+  left:10px;
+  bottom:10px;
   width: 40%;
   height:40%;
   z-index: 90;
-  border: 1px solid rgba(255,255,255,0.8);
+  border: 1px solid rgba(255,255,255,0.7);
 }
 
   #remote,#mirror{

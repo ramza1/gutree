@@ -215,14 +215,14 @@ Call.include({
     getCaller:function(){
         try{
             if(!this.caller){
-                return this.caller=Call.findByAttribute("caller_id",this.caller_id)
+                return this.caller=Contact.findByAttribute("user_id",this.caller_id)
             }
         }catch(e){}
     },
     getCallee:function(){
         try{
             if(!this.callee){
-                return this.callee=Call.findByAttribute("callee_id",this.callee_id)
+                return this.callee=Contact.findByAttribute("user_id",this.callee_id)
             }
         }catch(e){}
     }

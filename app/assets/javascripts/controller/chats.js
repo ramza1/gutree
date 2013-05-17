@@ -768,7 +768,7 @@ jQuery(function($){
             "click .cancel":"cancelCall",
 			"click .hang-up":"hangUp"
         },
-        proxied:["render","onUserMediaSuccess","streamCreatedHandler","sessionConnectedHandler","streamDestroyedHandler","onCallInit","onCallInitUpError","exceptionHandler","onNewCall","onAccept","onReject","onTerminate"],
+        proxied:["render","onUserMediaSuccess","streamCreatedHandler","sessionConnectedHandler","connectionDestroyedHandler","connectionCreatedHandler","streamDestroyedHandler","onCallInit","onCallInitUpError","exceptionHandler","onNewCall","onAccept","onReject","onTerminate"],
         template:function(data){
             data.isCurrentUser=(this.App.isCurrentUser(data.from))?true:false
             console.log("render",data)
@@ -845,10 +845,11 @@ jQuery(function($){
         initTB:function(sid,token){
             this.state=this.CONNECTING;
             this.opentokSession = TB.initSession(sid);
-            this.opentokSession = TB.initSession(sid);
             this.opentokSession.addEventListener('sessionConnected',this.sessionConnectedHandler);
             this.opentokSession.addEventListener('streamCreated',this.streamCreatedHandler);
             this.opentokSession.addEventListener('streamDestroyed',this.streamDestroyedHandler);
+			this.opentokSession.addEventListener("connectionCreated", this.connectionCreatedHandler);
+			this.opentokSession.addEventListener("connectionDestroyed",this.connectionDestroyedHandler);
             this.opentokSession.connect(this.App.OPENTOK_API_KEY,token);
         },
         doOffer:function(){
@@ -887,7 +888,7 @@ jQuery(function($){
 				console.log("onNewCall",this.conversation)
                 this.sid=call.sid
                 this.token=call.token
-                this.videoCallView.hide();
+                this.videoCallView.empty();
                 this.showAnswer();
             }
         },
@@ -924,12 +925,13 @@ jQuery(function($){
 				    console.log("onAccept",this.App.user.id)
                     this.state=this.INITIALIZED;
                     this.initTB(this.sid,this.token)
+					this.setStatus("");
                     this.showLive()
                 }),
                 this.proxy(function(iq){
 					console.log("accept error",iq)
                     this.reset();
-                    this.showError("failed to initialize stream")
+                    this.showError("failed to connect")
                  })
             );
             console.log("acceptCall")
@@ -958,13 +960,15 @@ jQuery(function($){
                 to: this.App.BRANCH_JID ,type:"set"})
                 .c("call-terminate", {xmlns:this.App.NS_CALL_SETUP,sid:this.sid}),
                 this.proxy(function(iq){
+					this.reset();
                 }),
                 this.proxy(function(iq){
 					console.log("error terminate",iq)
+					this.reset();
                 })
             );
 
-            this.reset();
+            
         },
         onAccept:function(sid){
             if(this.sid===sid){
@@ -992,8 +996,8 @@ jQuery(function($){
             this.state=this.CONNECTED;
 	        this.showLive();
 			var publisher = TB.initPublisher(this.App.OPENTOK_API_KEY, 'mirror',{
-				height:"100%",
-				width:"100%"
+				height:"40%",
+				width:"40%"
 			});
             this.opentokSession.publish(publisher);
 			this.subscribeToStreams(event.streams);
@@ -1007,6 +1011,13 @@ jQuery(function($){
 			console.log("local peer hung up by disconnecting, need to clean up, notify server")
 			this.terminateCall();
 			this.reset();
+		},
+		connectionCreatedHandler:function(event){
+			
+		},
+		connectionDestroyedHandler:function(event){
+			var reason=event.reason;
+			console.log("Reason",reason)
 		},
 		streamDestroyedHandler:function(event){
             this.reset();
@@ -1074,7 +1085,7 @@ jQuery(function($){
             this.conversation.call=null
 			this.enableAnswerButtons()
 			this.setStatus("");
-			this.videoCallView.hide();
+			this.videoCallView.empty();
 			this.showInvite()
 			this.opentokSession=null
         },
@@ -1549,10 +1560,10 @@ jQuery(function($){
 
 
 jQuery(function($){
-    Spine.Controller.prototype.App.base_url="http://antrees.com/"//"http://localhost:3000/"
-    Spine.Controller.prototype.App.bosh_addr = "http://antrees.com/http-bind"//"http://localhost:5280/http-bind"
+    Spine.Controller.prototype.App.base_url="http://localhost:3000/" //"http://antrees.com/"//
+    Spine.Controller.prototype.App.bosh_addr = "http://localhost:5280/http-bind"//"http://antrees.com/http-bind"//
 	Spine.Controller.prototype.App.OPENTOK_API_KEY='23037872'
-    Spine.Controller.prototype.App.BRANCH_SERVICE="branch.antrees.com"//branch.rzaartz.local
+    Spine.Controller.prototype.App.BRANCH_SERVICE="branch.rzaartz.local" //"branch.antrees.com"//
     Spine.Controller.prototype.App.isCurrentUser=function(user){
         if(this.user && user){
             return this.user.user_id===user.user_id

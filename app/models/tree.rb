@@ -12,9 +12,7 @@ class Tree < ActiveRecord::Base
   has_many :members, :through => :memberships, :source => :user
   has_many :branches,:dependent => :destroy
 
-  has_attached_file :photo,:styles => {:icon=>"50x50#",:thumb => "200x297>", :croppable => '600x600>'},
-                    :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
-                    :url => "/system/:attachment/:id/:style/:filename"
+  has_attached_file :photo,:styles => {:icon=>"50x50#",:thumb => "200x297>", :croppable => '600x600>'}
 
   after_create :update_state_initializing
 

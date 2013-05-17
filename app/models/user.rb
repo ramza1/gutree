@@ -13,9 +13,7 @@ class User < ActiveRecord::Base
 
   belongs_to :admin
 
-  has_attached_file :photo,:styles => {:icon=>"50x50#",:thumb => "200x297>", :croppable => '600x600>'},
-                    :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
-                    :url => "/system/:attachment/:id/:style/:filename"
+  has_attached_file :photo,:styles => {:icon=>"50x50#",:thumb => "200x297>", :croppable => '600x600>'}
 
   has_one :caption ,:as => :captionable
 
